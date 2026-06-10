@@ -1,4 +1,4 @@
 function ProgressBar() {
-    return <p>Progress Bar</p>
+    return 
 }
 export default ProgressBar;
