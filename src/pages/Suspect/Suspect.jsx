@@ -1,4 +1,4 @@
 function Suspect () {
-    return <p>Suspect</p>
+    return 
 };
 export default Suspect;
