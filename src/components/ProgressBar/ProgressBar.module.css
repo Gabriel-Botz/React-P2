@@ -8,7 +8,6 @@
   font-family: 'Monserrat', 'Courier New', Courier, monospace;
   box-sizing: border-box;
   background-color: #0B0D12;
-
 }
 
 .content{
@@ -19,7 +18,8 @@
   width: 100%;
   background-color: #0B0D12;
   border-top: 1px solid #2B3547;
-  border-bottom: 1px solid #2B3547
+  border-bottom: 1px solid #2B3547;
+  padding: 5px;
 }
 
 /* Div com os textos (título e percentual) */
