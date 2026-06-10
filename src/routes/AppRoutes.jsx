@@ -21,7 +21,8 @@ const router = createBrowserRouter([
       { path: '/witnesses', element: <Witness />, },
       { path: '/clues', element: <Clues />, },
       { path: '/result', element: <Result />, },
-
+      
+      { path: '/suspect-details/:id', element: <SuspectDetails />, },
     ],
   },
 ]);
