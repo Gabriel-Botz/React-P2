@@ -8,7 +8,6 @@ const ProgressBar = () => {
 
   return (
     <div className={styles.progressContainer}>
-      <p>Progress: {progressBar}</p>
       <div className={styles.labelRow}>
         <span className={styles.title}>PROCESSO DE INVESTIGAÇÃO:</span>
         <span className={styles.percentage}>{percentage}% CONCLUÍDO</span>
