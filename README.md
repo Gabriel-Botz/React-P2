@@ -109,8 +109,8 @@ Estado global centralizado da investigação:
 ### 👤 Membro 1 — Setup & Infraestrutura
 **Responsabilidade:** Base do projeto. Tudo começa aqui.
 
-- [ ] Criar o projeto com `create-react-app` ou `vite`
-- [ ] Instalar dependências (`axios`, `react-router-dom`, `react-icons`, `react-toastify`)
+- [x] Criar o projeto com `create-react-app` ou `vite`
+- [x] Instalar dependências (`axios`, `react-router-dom`, `react-icons`, `react-toastify`)
 - [ ] Criar estrutura de pastas (`components/`, `pages/`, `context/`, `services/`, `routes/`)
 - [ ] Configurar `api.js` com `axios.create` e `baseURL`
 - [ ] Criar `AppRoutes.jsx` com todas as rotas definidas
