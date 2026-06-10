@@ -109,15 +109,15 @@ Estado global centralizado da investigação:
 ### 👤 Membro 1 — Setup & Infraestrutura
 **Responsabilidade:** Base do projeto. Tudo começa aqui.
 
-- [v] Criar o projeto com `create-react-app` ou `vite`
-- [ ] Instalar dependências (`axios`, `react-router-dom`, `react-icons`, `react-toastify`)
-- [v] Criar estrutura de pastas (`components/`, `pages/`, `context/`, `services/`, `routes/`)
+- [x] Criar o projeto com `create-react-app` ou `vite`
+- [x] Instalar dependências (`axios`, `react-router-dom`, `react-icons`, `react-toastify`)
+- [x] Criar estrutura de pastas (`components/`, `pages/`, `context/`, `services/`, `routes/`)
 - [ ] Configurar `api.js` com `axios.create` e `baseURL`
 - [x] Criar `AppRoutes.jsx` com todas as rotas definidas
 - [x] Criar o `InvestigationContext.jsx` com estado inicial e Provider
 - [ ] Configurar o `App.jsx` com Provider + Router + Toastify
-- [v] Criar o `README.md` no repositório
-- [v] Subir estrutura base no GitHub e criar branches para cada membro
+- [x] Criar o `README.md` no repositório
+- [x] Subir estrutura base no GitHub e criar branches para cada membro
 
 ---
 
