@@ -124,12 +124,12 @@ Estado global centralizado da investigação:
 ### 👤 Membro 2 — Layout Global (Header, Footer, ProgressBar, Loading)
 **Responsabilidade:** Componentes compartilhados que aparecem em todas as telas.
 
-- [ ] Componente `Header` com navegação principal entre as páginas
-- [ ] Componente `Footer` com informações do projeto/grupo
+- [x] Componente `Header` com navegação principal entre as páginas
+- [x] Componente `Footer` com informações do projeto/grupo
 - [ ] Componente `Loading` para exibir durante requisições (`useState` + renderização condicional)
-- [ ] Componente `ProgressBar` consumindo o `progress` do Context e exibindo porcentagem visual
-- [ ] Estilização geral: dark mode, paleta de cores (preto, cinza escuro, branco, vermelho escuro)
-- [ ] Importar e configurar fontes e estilos globais
+- [x] Componente `ProgressBar` consumindo o `progress` do Context e exibindo porcentagem visual
+- [x] Estilização geral: dark mode, paleta de cores (preto, cinza escuro, branco, vermelho escuro)
+- [x] Importar e configurar fontes e estilos globais
 
 ---
 
