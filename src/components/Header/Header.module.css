@@ -15,6 +15,7 @@
     height: 80px;
     align-items: center;
     justify-content: center;
+
 }
 
 .logoContainer{
@@ -61,7 +62,7 @@
     cursor: pointer;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
-    padding: 15px;
+    padding: 10px;
     border-radius: 5px;
     align-items: center;
     display: flex;
@@ -93,7 +94,7 @@
     align-items: center;
     justify-content: center;
     color: #ffffff; 
-    padding: 15px;
+    padding: 10px;
     border-bottom: 2px solid #8B1A1A;
     background-color: #1B151F;
     border-radius: 5px;
