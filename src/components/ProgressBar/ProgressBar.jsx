@@ -1,8 +1,14 @@
-import styles from './ProgressBar.module.css';
+import styles from "./ProgressBar.module.css";
+import { useInvestigation } from "../../context/InvestigationContext";
 
-const ProgressBar = ({ percentage = 25 }) => {
+const ProgressBar = () => {
+  
+  const { progressBar } = useInvestigation();
+  const percentage = progressBar;
+
   return (
     <div className={styles.progressContainer}>
+      <p>Progress: {progressBar}</p>
       <div className={styles.labelRow}>
         <span className={styles.title}>PROCESSO DE INVESTIGAÇÃO:</span>
         <span className={styles.percentage}>{percentage}% CONCLUÍDO</span>
