@@ -5,7 +5,7 @@ import logo from "../../assets/icons/lupa.png"
 function Header () {
 
     const getLinkClass = ({ isActive }) => isActive ? style.active : style.item;
-    
+
     return (
     <header className={style.header}>
         <div className={style.container}>
@@ -16,9 +16,9 @@ function Header () {
         <div className={style.menu}>
             <ul className={style.list}>
                 <li><NavLink className={getLinkClass} to="/">Caso</NavLink></li>
-                <li><NavLink className={getLinkClass} to="/suspect">Suspeitos</NavLink></li>
+                <li><NavLink className={getLinkClass} to="/suspects">Suspeitos</NavLink></li>
                 <li><NavLink className={getLinkClass} to="/clues">Pistas</NavLink></li>
-                <li><NavLink className={getLinkClass} to="/witness">Testemunhas</NavLink></li>
+                <li><NavLink className={getLinkClass} to="/witnesses">Testemunhas</NavLink></li>
                 <li><NavLink className={getLinkClass} to="/accusation">Acusar</NavLink></li>
             </ul>
         </div>
