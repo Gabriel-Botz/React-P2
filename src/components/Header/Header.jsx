@@ -12,9 +12,9 @@ function Header () {
         <div className={style.menu}>
             <ul className={style.list}>
                 <li className={style.item}><Link to="/">Caso</Link></li>
-                <li className={style.item}><Link to="/suspect">Suspeitos</Link></li>
+                <li className={style.item}><Link to="/suspects">Suspeitos</Link></li>
                 <li className={style.item}><Link to="/clues">Pistas</Link></li>
-                <li className={style.item}><Link to="/witness">Testemunhas</Link></li>
+                <li className={style.item}><Link to="/witnesses">Testemunhas</Link></li>
                 <li className={style.item}><Link to="/accusation">Acusar</Link></li>
             </ul>
         </div>
