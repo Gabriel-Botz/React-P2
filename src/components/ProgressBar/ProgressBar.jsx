@@ -7,7 +7,8 @@ const ProgressBar = () => {
   const percentage = progressBar;
 
   return (
-    <div className={styles.progressContainer}>
+      <div className={styles.content}>
+      <div className={styles.progressContainer}>
       <div className={styles.labelRow}>
         <span className={styles.title}>PROCESSO DE INVESTIGAÇÃO:</span>
         <span className={styles.percentage}>{percentage}% CONCLUÍDO</span>
@@ -18,6 +19,7 @@ const ProgressBar = () => {
           style={{ width: `${percentage}%` }}
         />
       </div>
+    </div>
     </div>
   );
 };
