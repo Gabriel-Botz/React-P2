@@ -16,9 +16,9 @@ const router = createBrowserRouter([
 
       { path: '/', element: <Home />, },
       { path: '/accusation', element: <Accusation />, },
-      { path: '/suspect', element: <Suspect />, },
+      { path: '/suspects', element: <Suspect />, },
       { path: '/suspect-details', element: <SuspectDetails />, },
-      { path: '/witness', element: <Witness />, },
+      { path: '/witnesses', element: <Witness />, },
       { path: '/clues', element: <Clues />, },
       { path: '/result', element: <Result />, },
 
