@@ -1,0 +1,60 @@
+.witnessContainer {
+    border: 1px solid var(--accent-color, #b91c1c);
+    background-color: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Quando a testemunha já foi lida muda a borda pra vermelho */
+.witnessContainer.read {
+    border-color: #00ff00;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom-width: 0.15rem;
+    padding-bottom: 0.5rem;
+}
+
+.witnessName {
+    font-size: 1.15rem;
+    margin: 0;
+    color: #ffffff;
+}
+
+.badgeStatus {
+    margin-top: 0;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.badgeUnread {
+    background: #1B151F;
+    color: #dfb743;
+    border: 1px solid rgba(0, 191, 255, 0.3);
+}
+
+.badgeRead {
+    background: rgba(0, 255, 0, 0.1);
+    color: #00ff00;
+    border: 1px solid rgba(0, 255, 0, 0.3);
+}
+
+.witnessTestimony {
+    font-style: italic;
+    color: var(--text-secondary, #cccccc);
+    line-height: 1.4;
+    margin: 0;
+}
