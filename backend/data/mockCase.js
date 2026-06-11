@@ -1,19 +1,33 @@
 const mockCase = {
-  caso: {
-    id: "caso-001",
-    titulo: "O Último Indício",
+  case: {
+    id: "case-001",
+    title: "O Último Indício",
+    description: "Um empresário foi encontrado morto em sua cobertura.",
   },
 
-  suspeitos: [
+  suspects: [],
+
+  witnesses: [
     {
-      id: "suspeito-1",
-      nome: "Lucas Ferreira",
+      id: 1,
+      name: "Pedro Albuquerque",
+      role: "Bartender",
+      testimony: "Lucas Ferreira saiu do bar às 21:15 bastante nervoso.",
+      isContradictory: true,
     },
+
     {
-      id: "suspeito-2",
-      nome: "Amanda Ribeiro",
+      id: 2,
+      name: "Sofia Ramos",
+      role: "Secretária",
+      testimony: "Amanda Ribeiro permaneceu na galeria durante toda a noite.",
+      isContradictory: false,
     },
   ],
+
+  clues: [],
+
+  solution: {},
 };
 
 export default mockCase;
