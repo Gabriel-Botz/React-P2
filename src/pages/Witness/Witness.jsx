@@ -18,9 +18,9 @@ function Witness() {
                 try {
                     setLoading(true);
                     setError(null);
-                    const response = await axios.get('http://localhost:3000/witnesses');
+                    const response = await axios.get('http://localhost:5000/cases/generate');
 
-                    setWitnesses(response.data)
+                    setWitnesses(response.data.witnesses || []);
                 } catch (e) {
                     setError('Falha na comunicação com a central de depoimentos. Verifique se o servidor está ativo.')
                 } finally {
