@@ -9,7 +9,7 @@ function SuspectDetails () {
     
     const suspect = suspects.find( s => s.id === Number(id) );
 
-    if (loading) return <Loading/> // ainda precisa ser criada essa função
+    if (loading) return <Loading/>;
     if (!suspect) return <p>Suspeito não encontrado</p>;
     
     return (
