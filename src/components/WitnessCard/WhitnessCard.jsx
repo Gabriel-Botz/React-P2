@@ -1,14 +1,13 @@
 import React from 'react';
 import styles from './WhitnessCard.module.css';
+import iconHead from '../../assets/icons/research.png'
 
 function WitnessCard({ witness, isRead, onMarkRead }) {
     return (
-        // Opção 1
         <div className={`${styles.witnessContainer} ${isRead ? styles.read : ''}`} onClick={() => onMarkRead(witness.id)} >
-        {/*// Opção 2*/}
-        {/*<div className={`${styles.witnessContainer} ${isRead ? styles.read : ''} ${witness.isContradictory ? styles.witnessContradictory : ''}`} onClick={() => onMarkRead(witness.id)} >*/}
             <div className={styles.cardHeader}>
-                <div>
+                <div className={styles.headerName}>
+                    <img className={styles.icon} src={iconHead} alt=""/>
                     <h3 className={styles.witnessName}>{witness.name}</h3>
                 </div>
                 <span className={`${styles.badgeStatus} ${isRead ? styles.badgeRead : styles.badgeUnread}`} >
@@ -16,7 +15,7 @@ function WitnessCard({ witness, isRead, onMarkRead }) {
                         <>✓ Analisado</>
                     ) : (
                         // todo: alterar o icone
-                        <>📖 Ler Depoimento</>
+                        <> 🕮 Ler Depoimento</>
                     )}
                 </span>
             </div>
@@ -24,7 +23,6 @@ function WitnessCard({ witness, isRead, onMarkRead }) {
                 <p className={styles.witnessTestimony}>
                     "{witness.testimony}"
                 </p>
-
                 {witness.isContradictory && (
                     <span className={styles.alertText}>⚠️ Este depoimento contradiz um suspeito!</span>
                 )}
