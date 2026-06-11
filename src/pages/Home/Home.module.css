@@ -1,0 +1,75 @@
+.board {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pastaStack {
+  position: relative;
+  width: 500px;
+  min-height: 430px;
+}
+
+.pastaFundo {
+  position: absolute;
+  top: -6px;
+  left: 6px;
+  width: 100%;
+  height: 600px;
+  background: red;
+  border-radius: 0 14px 14px 14px;
+  border: 1.5px solid #0c0b08;
+}
+
+.pasta {
+  position: relative;
+  width: 100%;
+  background: #1c1c1f;
+  border-radius: 0 14px 14px 14px;
+  border: 1.5px solid #0a0907;
+  padding: 32px 28px 40px;
+  min-height: 610px;
+}
+
+.pastaAba {
+  position: absolute;
+  top: -33px;
+  left: 0;
+  width: 120px;
+  height: 35px;
+  background: #1c1c1f;
+  border: 1.5px solid #0a0907;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+}
+
+.numPasta {
+  color: #ffffff;
+}
+
+.casoTitulo {
+  color: #ffffff;
+}
+
+.barraTitulo {
+  width: 48;
+  height: 10;
+  background: #8b1a1a;
+  margin: 1.5rem auto;
+}
+
+.descricao {
+  color: #ffffff;
+  font-size: 3;
+}
+
+.button {
+  background: #8b1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 3;
+  padding: 14px 48px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
