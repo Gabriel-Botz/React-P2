@@ -1,0 +1,27 @@
+.loadingSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text {
+    color: white;
+    margin-top: 20px;   
+}
+
+.lupa {
+    margin: 20px;
+    
+    /* Chama a animação */
+    animation: orbitar 2s linear infinite;
+}
+
+/* Animação da lupa */
+@keyframes orbitar {
+    from {
+        transform: rotate(0deg) translateX(12px) rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg) translateX(12px) rotate(-360deg);
+    }
+}
