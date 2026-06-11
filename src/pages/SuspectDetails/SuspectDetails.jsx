@@ -7,7 +7,7 @@ import Modal from "../../components/Modal/Modal";
 function SuspectDetails () {
     const { id } = useParams();
     const [loading, setLoading] = useState(false);
-    const [suspects, selectedSuspect, setSelectedSuspect] = useInvestigation();
+    const {suspects, selectedSuspect, setSelectedSuspect} = useInvestigation();
     const [modalAberto, setModalAberto] = useState(false);
     
     const suspect = suspects.find( s => s.id === Number(id) );
