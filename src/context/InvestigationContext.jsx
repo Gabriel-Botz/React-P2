@@ -6,6 +6,7 @@ export function InvestigationProvider({ children }) {
 
   const [progressBar, setProgressBar] = useState(0);
   const [suspects, setSuspects] = useState([]);
+  const [selectedSuspect, setSelectedSuspect] = useState(null);
   const [witnesses, setWitnesses] = useState([]);
   const [clues, setClues] = useState([]);
   const [investigationStep, setInvestigationStep] = useState('home');
@@ -50,6 +51,8 @@ export function InvestigationProvider({ children }) {
     witnesses,
     clues,
     investigationStep,
+    selectedSuspect,
+    setSelectedSuspect,
     addSuspect,
     removeSuspect,
     addWitness,
