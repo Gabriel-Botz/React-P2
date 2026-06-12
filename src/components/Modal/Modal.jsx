@@ -1,28 +1,30 @@
+import styles from "./Modal.module.css"
+
 function Modal({isOpen, suspectName, onConfirm, onCancel}) {
     
     if (!isOpen) return null;
 
     return (
-        <div className="overlay">
-            <div className="modal">
+        <div className={styles.overlay}>
+            <div className={styles.modal}>
 
-                <div className="modal-header">
+                <div className={styles.header}>
                     <span>⚠️</span>
                     <h2>ATENÇÃO DETETIVE</h2>
                 </div>
 
-                <p>Tem certeza que deseja acusar este suspeito?</p>
+                <p className={styles.question}>Tem certeza que deseja acusar este suspeito?</p>
 
-                <div className="suspect-box">
+                <div className={styles.suspectBox}>
                     <small>SUSPEITO SELECIONADO:</small>
                     <strong>{suspectName}</strong>
                 </div>
 
-                <p><em>Esta decisão é definitiva e encerrará o caso.</em></p>
+                <p className={styles.warning}><em>Esta decisão é definitiva e encerrará o caso.</em></p>
 
-                <div className="modal-buttons">
-                    <button onClick={onConfirm}>Confirmar</button>
-                    <button onClick={onCancel}>Cancelar</button>
+                <div className={styles.buttons}>
+                    <button className={styles.btnCancelar} onClick={onConfirm}>Confirmar</button>
+                    <button className={styles.btnConfirmar} onClick={onCancel}>Cancelar</button>
                 </div>
 
             </div>
