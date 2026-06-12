@@ -7,8 +7,8 @@
 
 .pastaStack {
   position: relative;
-  width: 500px;
-  min-height: 430px;
+  width: 600px;
+  min-height: 570px;
 }
 
 .pastaFundo {
@@ -17,7 +17,7 @@
   left: 6px;
   width: 100%;
   height: 600px;
-  background: red;
+  background: #0f0f18;
   border-radius: 0 14px 14px 14px;
   border: 1.5px solid #0c0b08;
 }
@@ -27,7 +27,7 @@
   width: 100%;
   background: #1c1c1f;
   border-radius: 0 14px 14px 14px;
-  border: 1.5px solid #0a0907;
+  border: 1.5px solid #07070a;
   padding: 32px 28px 40px;
   min-height: 610px;
 }
@@ -42,6 +42,9 @@
   border: 1.5px solid #0a0907;
   border-bottom: none;
   border-radius: 8px 8px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .numPasta {
@@ -62,6 +65,13 @@
 .descricao {
   color: #ffffff;
   font-size: 3;
+  margin-top: 15px;
+}
+
+.buttonPos {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }
 
 .button {
@@ -72,4 +82,35 @@
   padding: 14px 48px;
   text-transform: uppercase;
   cursor: pointer;
+  font-size: 20px;
+}
+
+.crimeCard {
+  background: #131317;
+  border: 1px solid #333;
+  border-radius: 3px;
+  padding: 20px;
+  max-width: 560px;
+}
+
+.sumario {
+  color: #f0c040;
+  margin-top: 15px;
+}
+
+.crime {
+  font-size: 14px;
+  gap: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.crimeDesc {
+  color: #e05252;
+  font-weight: 500;
+}
+
+.crimeValue {
+  color: #c8c8c8;
 }
