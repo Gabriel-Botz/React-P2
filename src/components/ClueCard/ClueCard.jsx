@@ -1,31 +1,36 @@
-import "./ClueCard.css";
+import styles from "./ClueCard.module.css";
 
 function ClueCard({ clue, onSelect }) {
-  const icons = {
-    Faca: "🔪",
-    Relógio: "🕒",
-    Bilhete: "📝",
-  };
 
   return (
-    <div className="clue-card">
-      <div className="clue-icon">
-        {icons[clue.object]}
-      </div>
+    <div className={styles.clueCard}>
+      {clue.unlocked === false ? (
+        <>
+          <h2>Pista {clue.id}</h2>
 
-      <h2>{clue.title}</h2>
+          <button onClick={() => onSelect(clue)}>
+            Desbloquear
+          </button>
 
-      <p>
-        <strong>Objeto:</strong> {clue.object}
-      </p>
+          <p>Este indício está bloqueado</p>
+        </>
+      ) : (
+        <>
+          {/* <div className="clue-icon">
+            {icons[clue.object]}
+          </div> */}
 
-      <p>
-        <strong>Relatório:</strong> {clue.report}
-      </p>
+          <h2>Pista {clue.id}</h2>
 
-      <button onClick={() => onSelect(clue)}>
-        Marcar como relevante
-      </button>
+          <p>
+            <strong>Descrição:</strong> {clue.description}
+          </p>
+
+          <p>
+            <strong>Local:</strong> {clue.location}
+          </p>
+        </>
+      )}
     </div>
   );
 }

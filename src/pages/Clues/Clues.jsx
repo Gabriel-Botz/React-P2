@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ClueCard from "../../components/ClueCard/ClueCard";
-import "./Clues.css";
+import styles from "./Clues.module.css";
 import { useInvestigation } from "../../context/InvestigationContext";
 
 function Clues() {
@@ -14,29 +14,7 @@ function Clues() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const cluesList = [
-    {
-      id: 1,
-      title: "Pista 1",
-      object: "Faca",
-      report: "Encontrada na cozinha.",
-      unlocked: true,
-    },
-    {
-      id: 2,
-      title: "Pista 2",
-      object: "Relógio",
-      report: "Parou às 22h15.",
-      unlocked: true,
-    },
-    {
-      id: 3,
-      title: "Pista 3",
-      object: "Bilhete",
-      report: "Contém uma mensagem suspeita.",
-      unlocked: false,
-    },
-  ];
+  const cluesList = clues;
 
   function handleSelect(clue) {
     const exists = clues.some((c) => c.id === clue.id);
@@ -63,20 +41,22 @@ function Clues() {
   }
 
   return (
-    <div className="clues-container">
-      <h1 className="clues-title">
+    <div className={styles.cluesContainer}>
+      <h1 className={styles.cluesTitle}>
         Pistas da Investigação
       </h1>
 
-      {cluesList
-        .filter((clue) => clue.unlocked)
-        .map((clue) => (
-          <ClueCard
-            key={clue.id}
-            clue={clue}
-            onSelect={handleSelect}
-          />
-        ))}
+      <div className={styles.cluesList}>
+        {cluesList
+          // .filter((clue) => clue.unlocked)
+          .map((clue) => (
+            <ClueCard
+              key={clue.id}
+              clue={clue}
+              onSelect={handleSelect}
+            />
+          ))}
+      </div>
     </div>
   );
 }
