@@ -5,7 +5,15 @@ const InvestigationContext = createContext();
 export function InvestigationProvider({ children }) {
 
   const [progressBar, setProgressBar] = useState(0);
-  const [suspects, setSuspects] = useState([]);
+  const [suspects, setSuspects] = useState([
+    {
+      id: 1,
+      name: "Carlos Silva",
+      profissao: "Contador",
+      motivo: "Herança milionária",
+      alibi: "Estava em viagem de negócios"
+    }
+  ]);
   const [selectedSuspect, setSelectedSuspect] = useState(null);
   const [witnesses, setWitnesses] = useState([]);
   const [clues, setClues] = useState([]);
