@@ -2,11 +2,13 @@ import {useContext} from "react";
 import {useParams} from "react-router-dom";
 import {useState} from "react";
 import {useInvestigation} from "../../context/InvestigationContext";
+import {useNavigate} from "react-router-dom";
 import Modal from "../../components/Modal/Modal";
 import styles from "./SuspectDetails.module.css";
 
 function SuspectDetails () {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const {suspects, selectedSuspect, setSelectedSuspect} = useInvestigation();
     const [modalAberto, setModalAberto] = useState(false);
@@ -18,6 +20,10 @@ function SuspectDetails () {
     
     return (
         <div className={styles.container}>
+            <button onClick={() => navigate('/suspects')} className={styles.btnVoltar}> 
+                ← Voltar para Lista
+            </button>
+            
             <div className={styles.card}>
 
                 <div className={styles.left}>
