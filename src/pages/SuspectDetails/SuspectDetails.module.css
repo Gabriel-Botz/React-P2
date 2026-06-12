@@ -85,3 +85,21 @@
 .btnPrincipal:hover {
     background-color: #a00000;
 }
+
+.btnVoltar {
+    background: transparent;
+    border: 1px solid #555;
+    color: #cccccc;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btnVoltar:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+}
