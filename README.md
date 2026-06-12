@@ -195,10 +195,10 @@ Estado global centralizado da investigação:
 **Responsabilidade:** Depoimentos de testemunhas e envio da acusação final.
 
 **Witnesses:**
-- [ ] Requisição `GET /witnesses` com Axios usando `useEffect`
-- [ ] Componente `WitnessCard`: nome da testemunha e depoimento
-- [ ] Destacar visualmente depoimentos que contradizem suspeitos
-- [ ] Estado de loading e erro com renderização condicional
+- [x] Requisição `GET /witnesses` com Axios usando `useEffect`
+- [x] Componente `WitnessCard`: nome da testemunha e depoimento
+- [x] Destacar visualmente depoimentos que contradizem suspeitos
+- [x] Estado de loading e erro com renderização condicional
 
 **Accusation:**
 - [ ] Listar suspeitos para seleção final

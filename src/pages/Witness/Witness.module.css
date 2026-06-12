@@ -1,0 +1,56 @@
+.witnessContainer {
+    gap: 2rem;
+    text-align: left;
+    padding: 1rem;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.errorContainer {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 0 2rem;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.errorTitle {
+    font-size: 1.8rem;
+    marginBottom: 1rem;
+    text-transform: uppercase;
+    border-bottom: 2px dashed var(--accent-color, #b91c1c);
+    padding-bottom: 0.75rem;
+}
+
+.errorBody {
+    max-width: 500px;
+    line-height: 1.5;
+    background-color: rgba(43, 1, 2, 0.42);
+    border-radius: 8px;
+    padding: 0.75rem;
+    border: 1px solid var(--accent-color, #b91c1c);
+}
+
+.title {
+    text-transform: uppercase;
+    border-bottom: 2px dashed var(--accent-color, #b91c1c);
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.55rem;
+}
+
+.subTitle {
+    margin-top: 10px;
+}
+
+.witnessCard {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
