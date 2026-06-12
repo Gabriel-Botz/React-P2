@@ -45,7 +45,6 @@ function SuspectDetails () {
                         Marcar como Principal Suspeito
                     </button>
                 </div>
-
             </div>
 
             {modalAberto && (
