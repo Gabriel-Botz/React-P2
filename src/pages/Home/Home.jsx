@@ -13,7 +13,7 @@ function Home({}) {
               <p className={styles.numPasta}> Caso #0001 </p>
             </div>
 
-            <h1 className={styles.casoTitulo}>O Ultimo Indicio</h1>
+            <h1 className={styles.casoTitulo}>O Último Indício</h1>
             <div className={styles.barraTitulo} />
 
             <h3 className={styles.sumario}>Sumário do Crime</h3>
