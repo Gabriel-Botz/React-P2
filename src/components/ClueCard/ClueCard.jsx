@@ -6,7 +6,10 @@ function ClueCard({ clue, onSelect }) {
     <div className={styles.clueCard}>
       {clue.unlocked === false ? (
         <>
-          <h2>Pista {clue.id}</h2>
+          <div>
+            <h2>Pista {clue.id}</h2>
+            <div className={styles.barraTitulo}></div>
+          </div>
 
           <button onClick={() => onSelect(clue)}>
             Desbloquear
@@ -19,8 +22,10 @@ function ClueCard({ clue, onSelect }) {
           {/* <div className="clue-icon">
             {icons[clue.object]}
           </div> */}
-
-          <h2>Pista {clue.id}</h2>
+          <div>
+            <h2>Pista {clue.id}</h2>
+            <div className={styles.barraTitulo}></div>
+          </div>
 
           <p>
             <strong>Descrição:</strong> {clue.description}
