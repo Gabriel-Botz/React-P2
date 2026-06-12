@@ -61,6 +61,8 @@ export function InvestigationProvider({ children }) {
     investigationStep,
     selectedSuspect,
     setSelectedSuspect,
+    setSuspects,      
+    setClues,
     addSuspect,
     removeSuspect,
     addWitness,
