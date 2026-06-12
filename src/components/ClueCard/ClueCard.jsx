@@ -1,6 +1,18 @@
+import "./ClueCard.css";
+
 function ClueCard({ clue, onSelect }) {
+  const icons = {
+    Faca: "🔪",
+    Relógio: "🕒",
+    Bilhete: "📝",
+  };
+
   return (
-    <div>
+    <div className="clue-card">
+      <div className="clue-icon">
+        {icons[clue.object]}
+      </div>
+
       <h2>{clue.title}</h2>
 
       <p>
