@@ -16,7 +16,38 @@ export function InvestigationProvider({ children }) {
   ]);
   const [selectedSuspect, setSelectedSuspect] = useState(null);
   const [witnesses, setWitnesses] = useState([]);
-  const [clues, setClues] = useState([]);
+  const [clues, setClues] = useState([
+  {
+    "id": 1,
+    "description": "Faca de cozinha suja de sangue, escondida atrás do sofá principal.",
+    "location": "Sala de estar, próximo ao corpo da vítima.",
+    "unlocked":true
+  },
+  {
+    "id": 2,
+    "description": "Bilhete de ameaça rasgado em vários pedaços, onde ainda se lê: 'Você vai pagar pelo que fez'.",
+    "location": "Lixeira do escritório.",
+    "unlocked":true
+  },
+  {
+    "id": 3,
+    "description": "Copo de uísque com marcas de batom vermelho e um leve aroma de amêndoas amargas (sinal clássico de cianeto).",
+    "location": "Mesa de centro da sala.",
+    "unlocked":true
+  },
+  {
+    "id": 4,
+    "description": "Relógio de pulso com o vidro trincado, parado exatamente às 22h14 devido ao impacto.",
+    "location": "No chão, próximo à janela arrombada.",
+    "unlocked":false
+  },
+  {
+    "id": 5,
+    "description": "Chave reserva da porta dos fundos, com arranhões recentes como se tivesse sido forçada.",
+    "location": "No vaso de plantas do corredor externo.",
+    "unlocked":false
+  }
+]);
   const [investigationStep, setInvestigationStep] = useState('home');
 
   function addSuspect(suspect) {
