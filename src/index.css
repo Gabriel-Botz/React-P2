@@ -1,9 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Special+Elite&display=swap');
 
-body{
-    background-image: url(assets/images/background.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 100vh;
+body {
+  /* Garante que o fundo cubra a área toda e fique fixo durante o scroll */
+  background-image: url(assets/images/background.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* O fundo não se move com o scroll */
+  
+  /* Garante que o body ocupe, no mínimo, a altura total da janela */
+  min-height: 100vh;
+  margin: 0;
+  
+  /* Garante que, se o conteúdo for maior, o fundo continue preenchendo */
+  display: flex;
+  flex-direction: column;
 }
