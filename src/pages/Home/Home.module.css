@@ -1,0 +1,125 @@
+.board {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-grow: 1;
+  padding: 40px 20px;
+}
+
+.pastaStack {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+}
+
+.abaConectada {
+  width: 160px;
+  height: 35px;
+  background: #0f1218;
+  border: 1px solid #1a2330;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+  margin-bottom: -1px;
+  position: relative;
+  z-index: 1;
+}
+
+.pasta {
+  background-color: #0f1218;
+  background-image: linear-gradient(#161c26 1px, transparent 1px);
+  background-size: 100% 30px;
+  border: 1px solid #1a2330;
+  border-radius: 0 10px 10px 10px;
+  padding: 40px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+  font-family: 'Courier New', monospace;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.casoTitulo {
+  color: #fff;
+  font-size: 26px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.confidencial {
+  color: #8b1a1a;
+  border: 2px solid #8b1a1a;
+  padding: 4px 10px;
+  font-weight: bold;
+  transform: rotate(-3deg);
+  white-space: nowrap;
+}
+
+.barraTitulo {
+  width: 100%;
+  height: 2px;
+  background: #8b1a1a;
+  margin: 20px 0;
+}
+
+.sumario {
+  color: #f0c040;
+  margin: 0 0 15px 0;
+}
+
+.crimeCard {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid #2a3547;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.crimeDesc {
+  color: #e05252;
+  font-weight: bold;
+}
+
+.crimeValue {
+  color: #d1d1d1;
+  margin-bottom: 10px;
+}
+
+.narrativa {
+  color: #a0a0a0;
+  line-height: 1.8;
+  font-size: 14px;
+  text-align: justify;
+}
+
+.buttonPos {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.button {
+  background: #8b1a1a;
+  color: white;
+  border: 1px solid #5a1010;
+  padding: 12px 30px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.button:hover {
+  background: #a52020;
+}

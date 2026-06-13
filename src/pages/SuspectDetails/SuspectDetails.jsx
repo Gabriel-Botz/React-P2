@@ -2,27 +2,62 @@ import {useContext} from "react";
 import {useParams} from "react-router-dom";
 import {useState} from "react";
 import {useInvestigation} from "../../context/InvestigationContext";
+import {useNavigate} from "react-router-dom";
+import Modal from "../../components/Modal/Modal";
+import styles from "./SuspectDetails.module.css";
 
 function SuspectDetails () {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
-    const [suspects, selectedSuspect, setSelectedSuspect] = useInvestigation();
+    const {suspects, selectedSuspect, setSelectedSuspect} = useInvestigation();
+    const [modalAberto, setModalAberto] = useState(false);
     
     const suspect = suspects.find( s => s.id === Number(id) );
 
-    if (loading) return <Loading/>;
+    if (loading) return <p>Carregando...</p>;
     if (!suspect) return <p>Suspeito não encontrado</p>;
     
     return (
-        <div>
-            <h1>{suspect.name}</h1>
-            <p>{suspect.profissao}</p>
-            <p>{suspect.motivo}</p>
-            <p>{suspect.alibi}</p>
+        <div className={styles.container}>
+            <button onClick={() => navigate('/suspects')} className={styles.btnVoltar}> 
+                ← Voltar para Lista
+            </button>
+            
+            <div className={styles.card}>
 
-            <button onClick={() => setSelectedSuspect(suspect)}>Principal Suspeito</button>
-            <button onClick={() => setSelectedSuspect(null)}>Inocente</button>
-            <button onClick={() => setSelectedSuspect(null)}>Investigado</button>
+                <div className={styles.left}>
+                    <img src={suspect.image} alt={suspect.name} className={styles.photo} />
+                </div>
+
+                <div className={styles.right}>
+                    <small className={styles.dossie}>Dossiê Criminal — {suspect.name}</small>
+                    <h1 className={styles.name}>{suspect.name}</h1>
+                    <p className={styles.occupation}><strong>Ocupação:</strong> {suspect.profissao}</p>
+
+                    <h3 className={styles.sectionTitle}>Motivação</h3>
+                    <p className={styles.text}>{suspect.motivo}</p>
+
+                    <h3 className={styles.sectionTitle}>Álibi Declarado</h3>
+                    <p className={styles.alibi}>{suspect.alibi}</p>
+
+                    <button className={styles.btnPrincipal} onClick={() => setModalAberto(true)}>
+                        Marcar como Principal Suspeito
+                    </button>
+                </div>
+            </div>
+
+            {modalAberto && (
+                <Modal
+                    isOpen={modalAberto}
+                    suspectName={suspect.name}
+                    onConfirm={() => {
+                        setSelectedSuspect(suspect);
+                        setModalAberto(false);
+                    }}
+                    onCancel={() => setModalAberto(false)}
+                />
+            )}
         </div>
     );
 };
