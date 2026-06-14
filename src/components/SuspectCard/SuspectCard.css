@@ -75,14 +75,22 @@
   text-decoration: none;
   padding: 12px;
   border-radius: 4px;
-  text-align: center;
   font-weight: bold;
-  display: block;
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .button:hover {
   background-color: #A50000;
+}
+
+.icon-lupa {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1); 
 }
