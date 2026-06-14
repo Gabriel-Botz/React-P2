@@ -33,10 +33,10 @@ function SuspectDetails () {
                 <div className={styles.right}>
                     <small className={styles.dossie}>Dossiê Criminal — {suspect.name}</small>
                     <h1 className={styles.name}>{suspect.name}</h1>
-                    <p className={styles.occupation}><strong>Ocupação:</strong> {suspect.profissao}</p>
+                    <p className={styles.occupation}><strong>Ocupação:</strong> {suspect.profession}</p>
 
                     <h3 className={styles.sectionTitle}>Motivação</h3>
-                    <p className={styles.text}>{suspect.motivo}</p>
+                    <p className={styles.text}>{suspect.motive}</p>
 
                     <h3 className={styles.sectionTitle}>Álibi Declarado</h3>
                     <p className={styles.alibi}>{suspect.alibi}</p>
