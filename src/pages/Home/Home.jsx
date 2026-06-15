@@ -65,8 +65,8 @@ useEffect(() => {
 
           <div className={styles.buttonPos}>
             <button className={styles.button} onClick={() => navigate('/suspects')}>
-         🔍 Iniciar Investigação
-        </button>
+               🔍 Iniciar Investigação
+             </button>
           </div>
         </div>
       </div>
