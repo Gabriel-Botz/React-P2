@@ -1,22 +1,36 @@
-// caseRoutes.js
 import express from "express";
-import fetchCharacters from "../services/characterService.js";
+import fetchCharacters, { stripImages } from "../services/characterService.js";
 import generateCase from "../services/groqService.js";
 
 const router = express.Router();
 
-let cachedCase = null; // cache em memória
+let cachedCase = null;
 
 router.get("/generate", async (req, res) => {
   try {
     if (cachedCase) {
-      return res.json(cachedCase); // retorna o cache sem chamar o Gemini
+      return res.json(cachedCase);
     }
 
     const characters = await fetchCharacters(5);
-    const generatedCase = await generateCase(characters);
+    console.log(
+      "Imagens geradas:",
+      characters.map((c) => c.image),
+    );
+    const charactersForAI = stripImages(characters);
+    const generatedCase = await generateCase(charactersForAI);
 
-    cachedCase = generatedCase; // salva no cache
+    generatedCase.suspects = generatedCase.suspects.map((suspect, index) => ({
+      ...suspect,
+      picture: characters[index]?.image || "",
+    }));
+
+    generatedCase.witnesses = generatedCase.witnesses.map((witness, index) => ({
+      ...witness,
+      picture: characters[index]?.image || "",
+    }));
+
+    cachedCase = generatedCase;
     res.json(generatedCase);
   } catch (error) {
     console.error("Erro ao gerar caso:", error.message);
@@ -28,7 +42,7 @@ router.get("/generate", async (req, res) => {
 });
 
 router.get("/mock", (req, res) => {
-  res.json(mockCase);
+  res.json({ message: "mock desativado" });
 });
 
 export default router;
