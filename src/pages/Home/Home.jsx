@@ -7,16 +7,37 @@ import { useInvestigation } from "../../context/InvestigationContext";
 function Home() {
   const { setSuspects, setWitnesses, setClues } = useInvestigation();
 
-  useEffect(() => {
-    async function loadCase() {
-      const data = await generateCase();
-      setSuspects(data.suspects);
-      setWitnesses(data.witnesses);
-      setClues(data.clues);
-    }
+ useEffect(() => {
+  async function loadCase() {
+    const data = await generateCase();
 
-    loadCase();
-  }, []);
+    const suspects = data.suspects.map((s) => ({
+      id: s.id,
+      name: s.name,
+      image: s.picture,        // IA manda "picture", front espera "image"
+      profession: s.occupation, // IA manda "occupation", front espera "profession"
+      motive: s.motive,
+      alibi: s.alibi,
+      isGuilty: s.isGuilty,
+    }));
+
+    const witnesses = data.witnesses.map((w) => ({
+      id: w.id,
+      name: w.name,
+      image: w.picture,
+      role: w.role,
+      testimony: w.testimony,
+      isContradictory: w.isContradictory,
+    }));
+
+    setSuspects(suspects);
+    setWitnesses(witnesses);
+    setClues(data.clues);
+    setCaseInfo(data.case);
+  }
+
+  loadCase();
+}, []);
 
   return (
     <>
