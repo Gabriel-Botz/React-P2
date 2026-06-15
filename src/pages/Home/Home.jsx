@@ -3,8 +3,10 @@ import Header from "../../components/Header/Header";
 import styles from "./Home.module.css";
 import { generateCase } from "../../services/api";
 import { useInvestigation } from "../../context/InvestigationContext";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+const navigate = useNavigate();
 const { setWitnesses, setClues, setCaseInfo, formatAndLoadSuspects, caseInfo } = useInvestigation();
 
 useEffect(() => {
@@ -62,7 +64,9 @@ useEffect(() => {
           </p>
 
           <div className={styles.buttonPos}>
-            <button className={styles.button}>🔍 Iniciar Investigação</button>
+            <button className={styles.button} onClick={() => navigate('/suspects')}>
+         🔍 Iniciar Investigação
+        </button>
           </div>
         </div>
       </div>

@@ -26,9 +26,9 @@ ${JSON.stringify(characters)}
 
 Crie um caso com:
 - Título e descrição do crime
-- Cada personagem sendo suspeito ou testemunha
+- Crie exatamente 5 suspeitos e 5 testemunhas usando os personagens fornecidos
 - Motivo e álibi para cada suspeito
-- 3 pistas encontradas na cena
+- 10 pistas encontradas na cena
 - Testemunhos (alguns contraditórios)
 - A solução revelando o culpado
 
