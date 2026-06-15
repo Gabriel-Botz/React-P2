@@ -5,6 +5,7 @@ const InvestigationContext = createContext();
 export function InvestigationProvider({ children }) {
 
   const [progressBar, setProgressBar] = useState(0);
+  const [caseInfo, setCaseInfo] = useState(null);
   const [suspects, setSuspects] = useState([
     {
       "id": 1,
@@ -128,6 +129,9 @@ export function InvestigationProvider({ children }) {
     clues,
     investigationStep,
     selectedSuspect,
+    caseInfo,
+    setCaseInfo,
+    setWitnesses,  
     setSelectedSuspect,
     setSuspects,
     setClues,
