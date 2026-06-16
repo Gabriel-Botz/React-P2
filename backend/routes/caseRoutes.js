@@ -12,7 +12,7 @@ router.get("/generate", async (req, res) => {
       return res.json(cachedCase);
     }
 
-    const maleCharacters = await fetchCharacters(3, "male");
+    const maleCharacters = await fetchCharacters(4, "male");
     const femaleCharacters = await fetchCharacters(2, "female");
     const characters = [...maleCharacters, ...femaleCharacters];
 
@@ -50,12 +50,10 @@ router.get("/generate", async (req, res) => {
     res.json(generatedCase);
   } catch (error) {
     console.error("Erro ao gerar caso:", error.message);
-    res
-      .status(500)
-      .json({
-        error: "Não foi possível gerar o caso.",
-        details: error.message,
-      });
+    res.status(500).json({
+      error: "Não foi possível gerar o caso.",
+      details: error.message,
+    });
   }
 });
 
