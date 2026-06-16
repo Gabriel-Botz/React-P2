@@ -94,7 +94,9 @@ export function InvestigationProvider({ children }) {
     setInvestigationStep,
     progressBar,
     setProgressBar,
-    formatAndLoadSuspects
+    formatAndLoadSuspects,
+    revealedWitnesses,
+    revealWitness
   };
 
   return (

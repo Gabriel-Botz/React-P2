@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './WhitnessCard.module.css';
 import iconHead from '../../assets/icons/research.png'
 
-function WitnessCard({ witness, isRead, onMarkRead, isRevealed, onReveal, currentProgess }) {
+function WitnessCard({ witness, isRead, onMarkRead, isRevealed, onReveal, currentProgress }) {
 
     const isUnlocked = currentProgress >= witness.requiredProgress;
     
