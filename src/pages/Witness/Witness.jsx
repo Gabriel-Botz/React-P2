@@ -9,7 +9,7 @@ function Witness() {
     const [witnesses, setWitnesses] = useState([]);
     const [loading, setLoading] = useState(true);
     const [readWitnesses, setReadWitnesses] = useState([]);
-    const { progressBar, setProgressBar } = useInvestigation();
+    const { progressBar, setProgressBar, revealedWitnesses, revealWitness } = useInvestigation();
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -92,6 +92,9 @@ function Witness() {
                             witness={witness}
                             isRead={readWitnesses.includes(witness.id)}
                             onMarkRead={handleMarkRead}
+                            isRevealed={revealedWitnesses.includes(witness.id)}
+                            onReveal={() => revealWitness(witness.id)}
+                            currentProgess={progressBar}
                         />
                     ))}
                 </div>
