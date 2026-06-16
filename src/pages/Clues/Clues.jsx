@@ -5,6 +5,8 @@ import { useInvestigation } from "../../context/InvestigationContext";
 
 function Clues() {
   const {
+    progressBar,
+    setProgressBar,
     clues,
     unlockClue,
   } = useInvestigation();
@@ -16,6 +18,7 @@ function Clues() {
 
   function handleSelect(clue) {
       unlockClue(clue.id);
+      setProgressBar(progressBar + 5);
   }
 
   if (loading) {

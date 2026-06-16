@@ -117,7 +117,10 @@ export function InvestigationProvider({ children }) {
     setProgressBar,
     formatAndLoadSuspects,
     revealedWitnesses,
-    revealWitness
+    revealWitness,
+    unlockClue,
+    unlockSuspect,
+    unlockWitness
   };
 
   return (
