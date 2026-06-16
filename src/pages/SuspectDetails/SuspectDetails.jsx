@@ -42,9 +42,18 @@ function SuspectDetails () {
                     <h3 className={styles.sectionTitle}>Álibi Declarado</h3>
                     <p className={styles.alibi}>{suspect.alibi}</p>
 
-                    <button className={styles.btnPrincipal} onClick={() => setModalAberto(true)}>
-                        Marcar como Principal Suspeito
-                    </button>
+                    {!isSelected ? (
+                        <button className={styles.btnPrincipal} onClick={() => setModalAberto(true)}>
+                            Marcar como Principal Suspeito
+                        </button>
+                    ) : (
+                        <button className={styles.btnCancelar} onClick={() => {
+                            setSelectedSuspect(null);
+                            setProgressBar(prev => Math.max(prev - 20, 0));
+                        }}>
+                            Cancelar Acusação
+                        </button>
+                    )}
                 </div>
             </div>
 
