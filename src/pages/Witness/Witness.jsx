@@ -3,7 +3,7 @@ import styles  from './Witness.module.css'
 import WitnessCard  from '../../components/WitnessCard/WhitnessCard.jsx';
 import { Loading } from '../../components/Loading/Loading.jsx';
 import { useInvestigation } from '../../context/InvestigationContext.jsx'
-import axios from 'axios';
+
 
 function Witness() {
     const [witnesses, setWitnesses] = useState([]);
@@ -11,14 +11,22 @@ function Witness() {
     const [readWitnesses, setReadWitnesses] = useState([]);
     const { progressBar, setProgressBar, revealedWitnesses, revealWitness } = useInvestigation();
     const [error, setError] = useState(null);
+    const { progressBar,
+            setProgressBar,
+            witnesses,
+            setWitnesses,
+            readWitnesses,
+            setReadWitnesses
+    } = useInvestigation();
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            const fetchWitnesses = async () => {
-                try {
-                    setLoading(true);
-                    setError(null);
-                    const response = await axios.get('http://localhost:5000/cases/generate');
+            setLoading(false);
+        }, 1000)
+
+        if (readWitnesses.length > 0 || [...readWitnesses ] > 0 ) {
+            setLoading(false);
+        }
 
                     setWitnesses(response.data.witnesses || []);
 
@@ -35,24 +43,25 @@ function Witness() {
         return () => clearTimeout(timer);
     }, [])
 
+   if (loading) {
+       if(readWitnesses.length > 0){
+           return
+       } else {
+           return <Loading/>
+       }
+   }
+
     const handleMarkRead = (id) => {
-        setReadWitnesses((prev) => {
-            const isAlreadyRead = prev.includes(id);
-            let updateRead;
+        const isAlreadyRead = readWitnesses.includes(id);
+        const updateRead = isAlreadyRead
+            ? readWitnesses.filter((witnessId) => witnessId !== id)
+            : [...readWitnesses, id];
 
-            if (isAlreadyRead) {
-                updateRead = prev.filter((witnessId) => witnessId !== id);
-            } else {
-                updateRead = [...prev, id];
-            }
+        setReadWitnesses(updateRead);
 
-            const progressIncrement = 10;
-            const newProgress = updateRead.length * progressIncrement;
-
-            setProgressBar(Math.min(Math.max(newProgress, 0), 100));
-
-            return updateRead;
-        })
+        const progressIncrement = 10;
+        const newProgress = updateRead.length * progressIncrement;
+        setProgressBar(Math.min(Math.max(newProgress, 0), 100));
     };
 
     const handleReveal = (id) => {
