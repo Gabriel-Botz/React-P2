@@ -4,12 +4,12 @@ const RANDOM_USER_URL = "https://randomuser.me/api";
 
 const maleImages = Array.from({ length: 13 }, (_, i) => {
   const num = String(i + 1).padStart(2, "0");
-  return `/src/assets//male/male-${num}.png`;
+  return `/images/male/male-${num}.png`;
 });
 
 const femaleImages = Array.from({ length: 12 }, (_, i) => {
   const num = String(i + 1).padStart(2, "0");
-  return `/src/assets/famale/famale-${num}.png`;
+  return `/images/famale/famale-${num}.png`;
 });
 
 function getRandomImage(gender, usedImages) {
