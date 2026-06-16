@@ -34,7 +34,7 @@ Crie um caso com:
 
 Responda APENAS com JSON válido, sem texto extra, neste formato:
 {
-  "case": { "title": "", "description": "", "location": "" },
+  "case": { "title": "", "description": "", "location": "", "victim": "","deathTime": "",  "causeOfDeath": ""},
   "suspects": [{ "id": 1, "name": "", "occupation": "", "motive": "", "alibi": "", "picture": "", "isGuilty": false }],
   "witnesses": [{ "id": 1, "name": "", "role": "", "testimony": "", "picture": "", "isContradictory": false }],
   "clues": [{ "id": 1, "description": "", "location": "" }],

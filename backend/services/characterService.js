@@ -20,12 +20,13 @@ function getRandomImage(gender, usedImages) {
   return pool[index];
 }
 
-async function fetchCharacters(count = 5) {
+async function fetchCharacters(count = 5, gender = null) {
   const response = await axios.get(RANDOM_USER_URL, {
     params: {
       results: count,
       nat: "br",
       inc: "name,gender,dob,nat",
+      ...(gender && { gender }), // passa o gênero se fornecido
     },
   });
 

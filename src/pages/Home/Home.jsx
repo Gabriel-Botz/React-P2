@@ -53,10 +53,26 @@ useEffect(() => {
           <h3 className={styles.sumario}>📖 Sumário do Crime</h3>
           <div className={styles.crimeCard}>
             <div className={styles.crime}>
-              <p className={styles.crimeValue}>
+              <div className={styles.crimeValue}>
+
+                <p>
+                <span className={styles.crimeDesc}>Vítima: </span>
+                {caseInfo ? caseInfo.victim : "Carregando..."}
+                </p>
+                <p>
                 <span className={styles.crimeDesc}>Local: </span>
                 {caseInfo ? caseInfo.location : "Carregando..."}
-              </p>
+                </p>
+                <p>
+                <span className={styles.crimeDesc}>Hora do Óbito: </span>
+                {caseInfo ? caseInfo.deathTime : "Carregando..."}
+                </p>
+                <p>
+                <span className={styles.crimeDesc}>Causa da Morte: </span>
+                {caseInfo ? caseInfo.causeOfDeath : "Carregando..."}
+                </p>
+                
+              </div>
             </div>
           </div>
 
