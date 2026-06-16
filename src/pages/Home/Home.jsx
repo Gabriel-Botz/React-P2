@@ -13,6 +13,8 @@ useEffect(() => {
   async function loadCase() {
     const data = await generateCase();
 
+    console.log("Suspects da API:", data.suspects.map(s => s.picture));
+
     formatAndLoadSuspects(data.suspects); 
 
     const witnesses = data.witnesses.map((w) => ({
