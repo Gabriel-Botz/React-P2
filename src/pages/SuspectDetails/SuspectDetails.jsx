@@ -1,4 +1,3 @@
-import {useContext} from "react"; 
 import {useParams} from "react-router-dom";
 import {useState} from "react";
 import {useInvestigation} from "../../context/InvestigationContext";
@@ -14,6 +13,7 @@ function SuspectDetails () {
     const [modalAberto, setModalAberto] = useState(false);
     
     const suspect = suspects.find( s => s.id === Number(id) );
+    const isSelected = selectedSuspect?.id === suspect?.id;
 
     if (loading) return <p>Carregando...</p>;
     if (!suspect) return <p>Suspeito não encontrado</p>;
@@ -41,9 +41,17 @@ function SuspectDetails () {
                     <h3 className={styles.sectionTitle}>Álibi Declarado</h3>
                     <p className={styles.alibi}>{suspect.alibi}</p>
 
-                    <button className={styles.btnPrincipal} onClick={() => setModalAberto(true)}>
-                        Marcar como Principal Suspeito
-                    </button>
+                    {!isSelected ? (
+                        <button className={styles.btnPrincipal} onClick={() => setModalAberto(true)}>
+                            Marcar como Principal Suspeito
+                        </button>
+                    ) : (
+                        <button className={styles.btnCancelar} onClick={() => {
+                            setSelectedSuspect(null);
+                        }}>
+                            Cancelar Acusação
+                        </button>
+                    )}
                 </div>
             </div>
 
