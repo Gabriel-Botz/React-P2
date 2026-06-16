@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './WhitnessCard.module.css';
 import iconHead from '../../assets/icons/research.png'
 
-function WitnessCard({ witness, isRead, onMarkRead }) {
+function WitnessCard({ witness, isRead, onMarkRead, isRevealed, onReveal, currentProgess }) {
     return (
         <div className={`${styles.witnessContainer} ${isRead ? styles.read : ''}`} onClick={() => onMarkRead(witness.id)} >
             <div className={styles.cardHeader}>
