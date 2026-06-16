@@ -27,8 +27,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 3;
-  background: #1a6b1a;
+  height: 3px;
 }
 
 .titulo {
@@ -111,4 +110,30 @@
   color: #a0a0a0;
   font-size: 13px;
   margin: 0 0 0.85rem;
+}
+
+.linhaAcerto {
+  background: #1a6b1a;
+}
+
+.linhaErro {
+  background: #8b1a1a;
+}
+
+.cardAcerto {
+  border-color: #1a6b1a;
+}
+
+.cardErro {
+  border-color: #8b1a1a;
+}
+
+.crimeAcerto {
+  background-color: #0d1f0d;
+  border-color: #1a6b1a;
+}
+
+.crimeErro {
+  background-color: #1f0d0d;
+  border-color: #8b1a1a;
 }
