@@ -61,4 +61,26 @@ router.get("/mock", (req, res) => {
   res.json({ message: "mock desativado" });
 });
 
+router.post("/accusation", (req, res) => {
+  const { suspectId } = req.body;
+
+  if (!cachedCase) {
+    return res.status(400).json({ error: "Nenhum caso gerado ainda." });
+  }
+
+  const culpado = cachedCase.suspects.find((s) => s.isGuilty === true);
+  console.log("culpado:", culpado);
+  console.log(
+    "comparação:",
+    culpado?.id,
+    "===",
+    suspectId,
+    "→",
+    culpado?.id === suspectId,
+  );
+  const acertou = culpado?.id === suspectId;
+
+  res.json({ resultado: acertou ? "acerto" : "erro" });
+});
+
 export default router;
