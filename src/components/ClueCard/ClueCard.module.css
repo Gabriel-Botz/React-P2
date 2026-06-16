@@ -91,6 +91,7 @@
   border-radius: 8px;
   padding: 20px 16px;
   box-sizing: border-box;
+  height: 100%;
 }
 
 .lockIcon {
@@ -126,6 +127,7 @@
   box-sizing: border-box;
   opacity: 0.6;
   transition: all 0.3s ease;
+  height: 100%;
 }
 
 .lockedCardByProgress .clueIcon {
