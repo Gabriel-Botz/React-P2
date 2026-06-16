@@ -57,6 +57,33 @@
     border: 1px solid rgba(0, 255, 0, 0.3);
 }
 
+.badgeLocked{
+    background-color: #333;
+    color: #666;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    cursor: not-allowed;
+}
+
+.badgeReveal {
+    background-color: #8b0000;
+    color: #ffffff;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.fadeIn {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 .witnessTestimony {
     font-style: italic;
     color: var(--text-secondary, #cccccc);

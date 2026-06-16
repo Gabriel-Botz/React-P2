@@ -6,7 +6,10 @@ import { useInvestigation } from '../../context/InvestigationContext.jsx'
 
 
 function Witness() {
-    const [loading, setLoading] = useState(true)
+    const [witnesses, setWitnesses] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [readWitnesses, setReadWitnesses] = useState([]);
+    const { progressBar, setProgressBar, revealedWitnesses, revealWitness } = useInvestigation();
     const [error, setError] = useState(null);
     const { progressBar,
             setProgressBar,
@@ -25,6 +28,18 @@ function Witness() {
             setLoading(false);
         }
 
+                    setWitnesses(response.data.witnesses || []);
+
+                    setWitnesses(response.data.witnesses || []);
+                    console.log(response.data.witnesses[0]);
+                } catch (e) {
+                    setError('Falha na comunicação com a central de depoimentos. Verifique se o servidor está ativo.')
+                } finally {
+                    setLoading(false)
+                }
+            };
+            fetchWitnesses();
+        }, 1000);
         return () => clearTimeout(timer);
     }, [])
 
@@ -48,6 +63,20 @@ function Witness() {
         const newProgress = updateRead.length * progressIncrement;
         setProgressBar(Math.min(Math.max(newProgress, 0), 100));
     };
+
+    const handleReveal = (id) => {
+    revealWitness(id);
+    setProgressBar(prev => Math.min(prev + 10, 50));
+    };
+
+    const witnessesWithProgress = witnesses.map((witness, index) => ({
+    ...witness,
+    requiredProgress: (index / witnesses.length) * 100
+    })); // essa função distribui automaticamente o progresso de acordo com a posição da testemunha na lista.
+
+    if (loading) {
+        return <Loading/>;
+    }
 
     if (error) {
         return (
@@ -79,12 +108,15 @@ function Witness() {
             </div>
             </div>
                 <div className={styles.witnessCard}>
-                    {witnesses.map((witness) => (
+                    {witnessesWithProgress.map((witness) => (
                         <WitnessCard
                             key={witness.id}
                             witness={witness}
                             isRead={readWitnesses.includes(witness.id)}
                             onMarkRead={handleMarkRead}
+                            isRevealed={revealedWitnesses.includes(witness.id)}
+                            onReveal={() => handleReveal(witness.id)}
+                            currentProgress={progressBar}
                         />
                     ))}
                 </div>
