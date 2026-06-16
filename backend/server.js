@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import caseRoutes from "./routes/caseRoutes.js";
 
 dotenv.config();
-console.log("Chave:", process.env.GEMINI_API_KEY);
+console.log("Chave:", process.env.GROQ_API_KEY);
 const app = express();
 
 app.use(cors());
