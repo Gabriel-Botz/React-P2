@@ -11,6 +11,7 @@ export function InvestigationProvider({ children }) {
   const [witnesses, setWitnesses] = useState([]);
   const [clues, setClues] = useState([]);
   const [investigationStep, setInvestigationStep] = useState('home');
+  const [ revealedWitnesses, setRevealedWitnesses ] = useState([]);
 
   function formatAndLoadSuspects(apiData) {
     if (!apiData || apiData.length === 0) return;
@@ -48,6 +49,10 @@ export function InvestigationProvider({ children }) {
   function removeWitness(witnessId) {
     const newWitnesses = witnesses.filter(w => w.id !== witnessId);
     setWitnesses(newWitnesses);
+  }
+
+  function revealWitness(witnessId) {
+    setRevealedWitnesses([...revealedWitnesses, witnessId]);
   }
 
   function addClue(clue) {
@@ -110,10 +115,9 @@ export function InvestigationProvider({ children }) {
     setInvestigationStep,
     progressBar,
     setProgressBar,
-    unlockClue,
-    unlockWitness,
-    unlockSuspect,
-    formatAndLoadSuspects
+    formatAndLoadSuspects,
+    revealedWitnesses,
+    revealWitness
   };
 
   return (
