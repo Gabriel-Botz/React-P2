@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import ClueCard from "../../components/ClueCard/ClueCard";
 import styles from "./Clues.module.css";
 import { useInvestigation } from "../../context/InvestigationContext";
@@ -14,11 +14,22 @@ function Clues() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const cluesList = clues;
+  // Atribui percentuais de desbloqueio a cada pista
+  const cluesList = useMemo(() => {
+    return clues.map((clue, index) => {
+      if (!clue.progressRequiredToUnlock) {
+        return {
+          ...clue,
+          progressRequiredToUnlock: index * 10 // 0%, 20%, 40%, 60%, 80%
+        };
+      }
+      return clue;
+    });
+  }, [clues]);
 
   function handleSelect(clue) {
       unlockClue(clue.id);
-      setProgressBar(progressBar + 5);
+      setProgressBar(progressBar + 4.4);
   }
 
   if (loading) {
@@ -42,6 +53,7 @@ function Clues() {
               key={clue.id}
               clue={clue}
               onSelect={handleSelect}
+              progressBar={progressBar}
             />
           ))}
       </div>
