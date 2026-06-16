@@ -3,10 +3,10 @@ import styles  from './Witness.module.css'
 import WitnessCard  from '../../components/WitnessCard/WhitnessCard.jsx';
 import { Loading } from '../../components/Loading/Loading.jsx';
 import { useInvestigation } from '../../context/InvestigationContext.jsx'
-import axios from 'axios';
+
 
 function Witness() {
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null);
     const { progressBar,
             setProgressBar,
@@ -17,35 +17,24 @@ function Witness() {
     } = useInvestigation();
 
     useEffect(() => {
-        const timer = setTimeout (() => {
-            if (witnesses && witnesses.length > 0) {
-                setLoading(false);
-                return
-            }
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 1000)
 
-            if (readWitnesses) {
-                setLoading(false);
-                return
-            }
+        if (readWitnesses.length > 0 || [...readWitnesses ] > 0 ) {
+            setLoading(false);
+        }
 
-            const fetchWitnesses = async () => {
-                try {
-                    setLoading(true)
-                    setError(null)
-
-                    const response = await axios.get('http://localhost:5000/case/generate');
-                    setWitnesses(response.data.case?.witnesses || response.data.witnesses || []);
-                } catch (e) {
-                    console.error(e);
-                    setError('Não foi possível carregar as testemunhas');
-                } finally {
-                    setLoading(false);
-                }
-            }
-            fetchWitnesses().then(r => console.log(r));
-        }, 1000);
         return () => clearTimeout(timer);
-    }, [witnesses, setWitnesses, readWitnesses, setReadWitnesses])
+    }, [])
+
+   if (loading) {
+       if(readWitnesses.length > 0){
+           return
+       } else {
+           return <Loading/>
+       }
+   }
 
     const handleMarkRead = (id) => {
         const isAlreadyRead = readWitnesses.includes(id);
@@ -58,12 +47,7 @@ function Witness() {
         const progressIncrement = 10;
         const newProgress = updateRead.length * progressIncrement;
         setProgressBar(Math.min(Math.max(newProgress, 0), 100));
-        setLoading(false);
     };
-
-    if (loading) {
-        return <Loading/>;
-    }
 
     if (error) {
         return (
