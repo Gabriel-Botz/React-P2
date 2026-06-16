@@ -94,7 +94,7 @@ function Witness() {
                             onMarkRead={handleMarkRead}
                             isRevealed={revealedWitnesses.includes(witness.id)}
                             onReveal={() => revealWitness(witness.id)}
-                            currentProgess={progressBar}
+                            currentProgress={progressBar}
                         />
                     ))}
                 </div>
