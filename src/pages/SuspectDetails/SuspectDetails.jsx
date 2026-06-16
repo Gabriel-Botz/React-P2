@@ -10,10 +10,11 @@ function SuspectDetails () {
     const { id } = useParams();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
-    const {suspects, selectedSuspect, setSelectedSuspect} = useInvestigation();
+    const {suspects, selectedSuspect, setSelectedSuspect, setProgressBar} = useInvestigation();
     const [modalAberto, setModalAberto] = useState(false);
     
     const suspect = suspects.find( s => s.id === Number(id) );
+    const isSelected = selectedSuspect?.id === suspect?.id;
 
     if (loading) return <p>Carregando...</p>;
     if (!suspect) return <p>Suspeito não encontrado</p>;
