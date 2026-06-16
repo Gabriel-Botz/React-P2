@@ -6,50 +6,59 @@ import { useInvestigation } from '../../context/InvestigationContext.jsx'
 import axios from 'axios';
 
 function Witness() {
-    const [witnesses, setWitnesses] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [readWitnesses, setReadWitnesses] = useState([]);
-    const { progressBar, setProgressBar } = useInvestigation();
     const [error, setError] = useState(null);
+    const { progressBar,
+            setProgressBar,
+            witnesses,
+            setWitnesses,
+            readWitnesses,
+            setReadWitnesses
+    } = useInvestigation();
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            const fetchWitnesses = async () => {
-                try {
-                    setLoading(true);
-                    setError(null);
-                    const response = await axios.get('http://localhost:5000/cases/generate');
-
-                    setWitnesses(response.data.witnesses || []);
-                } catch (e) {
-                    setError('Falha na comunicação com a central de depoimentos. Verifique se o servidor está ativo.')
-                } finally {
-                    setLoading(false)
-                }
-            };
-            fetchWitnesses();
-        }, 1000);
-        return () => clearTimeout(timer);
-    }, [])
-
-    const handleMarkRead = (id) => {
-        setReadWitnesses((prev) => {
-            const isAlreadyRead = prev.includes(id);
-            let updateRead;
-
-            if (isAlreadyRead) {
-                updateRead = prev.filter((witnessId) => witnessId !== id);
-            } else {
-                updateRead = [...prev, id];
+        const timer = setTimeout (() => {
+            if (witnesses && witnesses.length > 0) {
+                setLoading(false);
+                return
             }
 
-            const progressIncrement = 10;
-            const newProgress = updateRead.length * progressIncrement;
+            if (readWitnesses) {
+                setLoading(false);
+                return
+            }
 
-            setProgressBar(Math.min(Math.max(newProgress, 0), 100));
+            const fetchWitnesses = async () => {
+                try {
+                    setLoading(true)
+                    setError(null)
 
-            return updateRead;
-        })
+                    const response = await axios.get('http://localhost:5000/case/generate');
+                    setWitnesses(response.data.case?.witnesses || response.data.witnesses || []);
+                } catch (e) {
+                    console.error(e);
+                    setError('Não foi possível carregar as testemunhas');
+                } finally {
+                    setLoading(false);
+                }
+            }
+            fetchWitnesses().then(r => console.log(r));
+        }, 1000);
+        return () => clearTimeout(timer);
+    }, [witnesses, setWitnesses, readWitnesses, setReadWitnesses])
+
+    const handleMarkRead = (id) => {
+        const isAlreadyRead = readWitnesses.includes(id);
+        const updateRead = isAlreadyRead
+            ? readWitnesses.filter((witnessId) => witnessId !== id)
+            : [...readWitnesses, id];
+
+        setReadWitnesses(updateRead);
+
+        const progressIncrement = 10;
+        const newProgress = updateRead.length * progressIncrement;
+        setProgressBar(Math.min(Math.max(newProgress, 0), 100));
+        setLoading(false);
     };
 
     if (loading) {
