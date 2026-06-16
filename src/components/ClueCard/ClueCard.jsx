@@ -4,24 +4,8 @@ function ClueCard({ clue, onSelect }) {
 
   return (
     <div className={styles.clueCard}>
-      {clue.unlocked === false ? (
+      {clue.unlocked === true ? (
         <>
-          <div>
-            <h2>Pista {clue.id}</h2>
-            <div className={styles.barraTitulo}></div>
-          </div>
-
-          <button onClick={() => onSelect(clue)}>
-            Desbloquear
-          </button>
-
-          <p>Este indício está bloqueado</p>
-        </>
-      ) : (
-        <>
-          {/* <div className="clue-icon">
-            {icons[clue.object]}
-          </div> */}
           <div>
             <h2>Pista {clue.id}</h2>
             <div className={styles.barraTitulo}></div>
@@ -34,6 +18,19 @@ function ClueCard({ clue, onSelect }) {
           <p>
             <strong>Local:</strong> {clue.location}
           </p>
+        </>
+      ) : (
+        <>
+          <div>
+            <h2>Pista {clue.id}</h2>
+            <div className={styles.barraTitulo}></div>
+          </div>
+
+          <button onClick={() => onSelect(clue)}>
+            Desbloquear
+          </button>
+
+          <p>Este indício está bloqueado</p>
         </>
       )}
     </div>
