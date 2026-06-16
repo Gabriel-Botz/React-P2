@@ -103,3 +103,19 @@
     border-color: #ffffff;
     color: #ffffff;
 }
+
+.btnCancelar {
+    margin-top: 1rem;
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #8b0000;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    align-self: flex-start;
+}
+
+.btnCancelar:hover {
+    background-color: #8b0000;
+}
