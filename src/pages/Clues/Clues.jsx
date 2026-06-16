@@ -5,10 +5,10 @@ import { useInvestigation } from "../../context/InvestigationContext";
 
 function Clues() {
   const {
-    addClue,
-    clues,
     progressBar,
     setProgressBar,
+    clues,
+    unlockClue,
   } = useInvestigation();
 
   const [loading, setLoading] = useState(false);
@@ -17,19 +17,8 @@ function Clues() {
   const cluesList = clues;
 
   function handleSelect(clue) {
-    const exists = clues.some((c) => c.id === clue.id);
-
-    if (!exists) {
-      addClue(clue);
-
-      if (progressBar < 100) {
-        setProgressBar((prev) => prev + 10);
-      }
-
-      console.log("Pista adicionada:", clue);
-    } else {
-      console.log("Pista já selecionada!");
-    }
+      unlockClue(clue.id);
+      setProgressBar(progressBar + 5);
   }
 
   if (loading) {
@@ -48,7 +37,6 @@ function Clues() {
 
       <div className={styles.cluesList}>
         {cluesList
-          // .filter((clue) => clue.unlocked)
           .map((clue) => (
             <ClueCard
               key={clue.id}

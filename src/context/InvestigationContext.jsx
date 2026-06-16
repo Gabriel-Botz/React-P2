@@ -64,6 +64,27 @@ export function InvestigationProvider({ children }) {
     setClues(newClues);
   }
 
+  function unlockClue(clueId) {
+    const updatedClues = clues.map(c => 
+      c.id === clueId ? { ...c, unlocked: true } : c
+    );
+    setClues(updatedClues);
+  }
+
+  function unlockWitness(witnessId) {
+    const updatedWitnesses = witnesses.map(c => 
+      c.id === witnessId ? { ...c, unlocked: true } : c
+    );
+    setClues(updatedWitnesses);
+  }
+
+  function unlockSuspect(suspectId) {
+    const updatedSuspects = suspects.map(c => 
+      c.id === suspectId ? { ...c, unlocked: true } : c
+    );
+    setClues(updatedSuspects);
+  }
+
   function resetInvestigation() {
     setSuspects([]);
     setWitnesses([]);
@@ -96,7 +117,10 @@ export function InvestigationProvider({ children }) {
     setProgressBar,
     formatAndLoadSuspects,
     revealedWitnesses,
-    revealWitness
+    revealWitness,
+    unlockClue,
+    unlockSuspect,
+    unlockWitness
   };
 
   return (
