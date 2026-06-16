@@ -26,7 +26,7 @@ const SuspectCard = ({ id, name, profession, image }) => {
       
       <div className="info">
         <h3 className="name">{name}</h3>
-        <p className="profession"><strong>Profissão:</strong> {profession}</p>
+        <p className="profession"><strong>Ocupação:</strong> {profession}</p>
         
 
         <Link to={`/suspect-details/${id}`} className="button">

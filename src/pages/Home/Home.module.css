@@ -92,8 +92,11 @@
 }
 
 .crimeValue {
+  display: flex;
   color: #d1d1d1;
   margin-bottom: 10px;
+  gap: 10px;
+  flex-direction: column;
 }
 
 .narrativa {

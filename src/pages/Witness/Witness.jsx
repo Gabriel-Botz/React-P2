@@ -47,7 +47,7 @@ function Witness() {
 
     const handleReveal = (id) => {
         revealWitness(id);
-        setProgressBar(progressBar + 5);
+        setProgressBar(progressBar + 10);
     };
 
     if (loading) {
