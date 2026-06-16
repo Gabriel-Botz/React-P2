@@ -44,7 +44,11 @@ function Accusation() {
 
       toast.success("💥 Acusação enviada com sucesso!");
       navigate("/result", {
-        state: { resultado: response.data.resultado },
+        state: {
+          resultado: response.data.resultado,
+          culpado: response.data.culpado,
+          resolucao: response.data.resolucao,
+        },
       });
     } catch (error) {
       console.error("Erro ao enviar acusação para a API. Erro:", error);
