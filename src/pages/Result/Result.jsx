@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import styles from "./Result.module.css";
 
 function Result() {
   function ResultPage() {
@@ -8,7 +9,35 @@ function Result() {
   }
   return (
     <>
-      <div></div>
+      <div className={styles.bg}>
+        <div className={styles.card}>
+          <div className={styles.linhaCard}></div>
+          <div className={styles.trofeu}>🏆</div>
+          <h1 className={styles.titulo}>Parabens</h1>
+          <p className={styles.subtitulo}>Voce solucionou o caso</p>
+
+          <div className={styles.cardSuspeito}>
+            <div className={styles.fotoMoldura}>
+              <div className={styles.foto}></div>
+            </div>
+            <div>
+              <h4 className={styles.nomeSuspeito}>Dr Hans Chucrute</h4>
+              <p className={styles.descSuspeito}>Doutor nas horas vagas</p>
+            </div>
+          </div>
+
+          <div className={styles.separador}></div>
+          <div className={styles.crimeCard}>
+            <h3 className={styles.tituloCrime}>⌕ Resolução do Inquerito</h3>
+            <p className={styles.textoCrime}>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Veritatis a iure dolorum mollitia ea, quasi vitae? Sequi debitis,
+              quia eius iure saepe nemo reprehenderit, commodi mollitia beatae
+              dolores consequatur et.
+            </p>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
