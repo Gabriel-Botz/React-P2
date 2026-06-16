@@ -55,6 +55,11 @@ function Witness() {
         })
     };
 
+    const handleReveal = (id) => {
+    revealWitness(id);
+    setProgressBar(prev => Math.min(prev + 10, 50));
+    };
+
     const witnessesWithProgress = witnesses.map((witness, index) => ({
     ...witness,
     requiredProgress: (index / witnesses.length) * 100
@@ -94,7 +99,7 @@ function Witness() {
             </div>
             </div>
                 <div className={styles.witnessCard}>
-                    {witnesses.map((witness) => (
+                    {witnessesWithProgress.map((witness) => (
                         <WitnessCard
                             key={witness.id}
                             witness={witness}
