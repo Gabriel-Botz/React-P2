@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styles  from './Witness.module.css'
 import WitnessCard  from '../../components/WitnessCard/WhitnessCard.jsx';
 import { Loading } from '../../components/Loading/Loading.jsx';
 import { useInvestigation } from '../../context/InvestigationContext.jsx'
-import axios from 'axios';
+
 
 function Witness() {
     const [witnesses, setWitnesses] = useState([]);
     const [loading, setLoading] = useState(true);
     const [readWitnesses, setReadWitnesses] = useState([]);
-    const { progressBar, setProgressBar, revealedWitnesses, revealWitness } = useInvestigation();
     const [error, setError] = useState(null);
+    const { progressBar, setProgressBar, revealedWitnesses, revealWitness } = useInvestigation();
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -19,11 +20,7 @@ function Witness() {
                     setLoading(true);
                     setError(null);
                     const response = await axios.get('http://localhost:5000/cases/generate');
-
                     setWitnesses(response.data.witnesses || []);
-
-                    setWitnesses(response.data.witnesses || []);
-                    console.log(response.data.witnesses[0]);
                 } catch (e) {
                     setError('Falha na comunicação com a central de depoimentos. Verifique se o servidor está ativo.')
                 } finally {
@@ -35,35 +32,23 @@ function Witness() {
         return () => clearTimeout(timer);
     }, [])
 
+     const witnessesWithProgress = witnesses.map((witness, index) => ({
+        ...witness,
+        requiredProgress: index * 10
+    }));
+
     const handleMarkRead = (id) => {
-        setReadWitnesses((prev) => {
-            const isAlreadyRead = prev.includes(id);
-            let updateRead;
-
-            if (isAlreadyRead) {
-                updateRead = prev.filter((witnessId) => witnessId !== id);
-            } else {
-                updateRead = [...prev, id];
-            }
-
-            const progressIncrement = 10;
-            const newProgress = updateRead.length * progressIncrement;
-
-            setProgressBar(Math.min(Math.max(newProgress, 0), 100));
-
-            return updateRead;
-        })
+        const isAlreadyRead = readWitnesses.includes(id);
+        const updateRead = isAlreadyRead
+            ? readWitnesses.filter((witnessId) => witnessId !== id)
+            : [...readWitnesses, id];
+        setReadWitnesses(updateRead);
     };
 
     const handleReveal = (id) => {
-    revealWitness(id);
-    setProgressBar(prev => Math.min(prev + 10, 50));
+        revealWitness(id);
+        setProgressBar(prev => Math.min(prev + 10, 50));
     };
-
-    const witnessesWithProgress = witnesses.map((witness, index) => ({
-    ...witness,
-    requiredProgress: (index / witnesses.length) * 100
-    })); // essa função distribui automaticamente o progresso de acordo com a posição da testemunha na lista.
 
     if (loading) {
         return <Loading/>;
