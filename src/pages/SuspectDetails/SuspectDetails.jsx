@@ -63,6 +63,7 @@ function SuspectDetails () {
                     suspectName={suspect.name}
                     onConfirm={() => {
                         setSelectedSuspect(suspect);
+                        setProgressBar(prev => Math.min(prev + 20, 100));
                         setModalAberto(false);
                     }}
                     onCancel={() => setModalAberto(false)}
