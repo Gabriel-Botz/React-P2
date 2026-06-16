@@ -1,4 +1,3 @@
-import {useContext} from "react"; 
 import {useParams} from "react-router-dom";
 import {useState} from "react";
 import {useInvestigation} from "../../context/InvestigationContext";
@@ -10,7 +9,7 @@ function SuspectDetails () {
     const { id } = useParams();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
-    const {suspects, selectedSuspect, setSelectedSuspect, setProgressBar} = useInvestigation();
+    const {suspects, selectedSuspect, setSelectedSuspect} = useInvestigation();
     const [modalAberto, setModalAberto] = useState(false);
     
     const suspect = suspects.find( s => s.id === Number(id) );
@@ -49,7 +48,6 @@ function SuspectDetails () {
                     ) : (
                         <button className={styles.btnCancelar} onClick={() => {
                             setSelectedSuspect(null);
-                            setProgressBar(prev => Math.max(prev - 20, 0));
                         }}>
                             Cancelar Acusação
                         </button>
@@ -63,7 +61,6 @@ function SuspectDetails () {
                     suspectName={suspect.name}
                     onConfirm={() => {
                         setSelectedSuspect(suspect);
-                        setProgressBar(prev => Math.min(prev + 20, 100));
                         setModalAberto(false);
                     }}
                     onCancel={() => setModalAberto(false)}
