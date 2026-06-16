@@ -10,11 +10,29 @@
   width: 280px;
   gap: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .card:hover {
   transform: translateY(-5px);
+}
+
+.card.selected {
+  border: 2px solid #FFD700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+  transform: scale(1.02);
+}
+
+.card.selected:hover {
+  transform: scale(1.04) translateY(-5px);
+}
+
+.card.ghost {
+  opacity: 0.35;
+  filter: grayscale(80%);
+  pointer-events: none;
 }
 
 .image {
@@ -44,32 +62,6 @@
   color: #CCCCCC;
 }
 
-.rankingContainer {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.rankingText {
-  margin: 0 0 6px 0;
-  font-size: 0.9rem;
-  font-weight: bold;
-}
-
-.progressBarBg {
-  background-color: #000000;
-  border-radius: 4px;
-  height: 12px;
-  width: 100%;
-  overflow: hidden;
-  border: 1px solid #333333;
-}
-
-.progressBarFill {
-  background-color: #8B0000;
-  height: 100%;
-  transition: width 0.4s ease;
-}
-
 .button {
   background-color: #8B0000;
   color: #FFFFFF;
@@ -90,8 +82,32 @@
   background-color: #A50000;
 }
 
+.button.disabled {
+  background-color: #333333;
+  color: #888888;
+  cursor: not-allowed;
+}
+
 .icon-lupa {
   width: 18px;
   height: 18px;
   filter: brightness(0) invert(1); 
+}
+
+.ribbon {
+  position: absolute;
+  top: 15px;
+  right: -35px;
+  width: 150px;
+  background-color: #FFD700;
+  color: #000;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.8rem;
+  padding: 5px 0;
+  transform: rotate(45deg);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  z-index: 10;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
