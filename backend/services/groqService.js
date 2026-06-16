@@ -36,7 +36,7 @@ Responda APENAS com JSON válido, sem texto extra, neste formato:
 {
   "case": { "title": "", "description": "", "location": "" },
   "suspects": [{ "id": 1, "name": "", "occupation": "", "motive": "", "alibi": "", "picture": "", "isGuilty": false }],
-  "witnesses": [{ "id": 1, "name": "", "role": "", "testimony": "", "picture": "", "isContradictory": false, "requiredProgress": 0 }],
+  "witnesses": [{ "id": 1, "name": "", "role": "", "testimony": "", "picture": "", "isContradictory": false }],
   "clues": [{ "id": 1, "description": "", "location": "" }],
   "solution": { "guiltyName": "", "explanation": "" }
 }`,

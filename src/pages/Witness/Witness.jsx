@@ -21,6 +21,9 @@ function Witness() {
                     const response = await axios.get('http://localhost:5000/cases/generate');
 
                     setWitnesses(response.data.witnesses || []);
+
+                    setWitnesses(response.data.witnesses || []);
+                    console.log(response.data.witnesses[0]);
                 } catch (e) {
                     setError('Falha na comunicação com a central de depoimentos. Verifique se o servidor está ativo.')
                 } finally {
@@ -51,6 +54,11 @@ function Witness() {
             return updateRead;
         })
     };
+
+    const witnessesWithProgress = witnesses.map((witness, index) => ({
+    ...witness,
+    requiredProgress: (index / witnesses.length) * 100
+    })); // essa função distribui automaticamente o progresso de acordo com a posição da testemunha na lista.
 
     if (loading) {
         return <Loading/>;
