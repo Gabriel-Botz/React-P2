@@ -23,7 +23,7 @@
 
 .errorTitle {
     font-size: 1.8rem;
-    marginBottom: 1rem;
+    margin-bottom: 1rem;
     text-transform: uppercase;
     border-bottom: 2px dashed var(--accent-color, #b91c1c);
     padding-bottom: 0.75rem;
