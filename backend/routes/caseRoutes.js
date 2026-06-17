@@ -80,7 +80,15 @@ router.post("/accusation", (req, res) => {
   );
   const acertou = culpado?.id === suspectId;
 
-  res.json({ resultado: acertou ? "acerto" : "erro" });
+  res.json({
+    resultado: acertou ? "acerto" : "erro",
+    culpado: {
+      name: culpado.name,
+      occupation: culpado.occupation,
+      picture: culpado.picture,
+    },
+    resolucao: cachedCase.solution.explanation,
+  });
 });
 
 export default router;
