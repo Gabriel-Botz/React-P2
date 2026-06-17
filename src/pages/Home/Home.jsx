@@ -9,29 +9,29 @@ function Home() {
 const navigate = useNavigate();
 const { setWitnesses, setClues, setCaseInfo, formatAndLoadSuspects, caseInfo } = useInvestigation();
 
+async function loadCase() {
+  const data = await generateCase();
+
+  console.log("Suspects da API:", data.suspects.map(s => s.picture));
+
+  formatAndLoadSuspects(data.suspects); 
+
+  const witnesses = data.witnesses.map((w) => ({
+    id: w.id,
+    name: w.name,
+    image: w.picture,
+    role: w.role,
+    testimony: w.testimony,
+    isContradictory: w.isContradictory,
+  }));
+
+  setWitnesses(witnesses);
+  setClues(data.clues);
+  setCaseInfo(data.case);
+}
+
 useEffect(() => {
-  async function loadCase() {
-    const data = await generateCase();
 
-    console.log("Suspects da API:", data.suspects.map(s => s.picture));
-
-    formatAndLoadSuspects(data.suspects); 
-
-    const witnesses = data.witnesses.map((w) => ({
-      id: w.id,
-      name: w.name,
-      image: w.picture,
-      role: w.role,
-      testimony: w.testimony,
-      isContradictory: w.isContradictory,
-    }));
-
-    setWitnesses(witnesses);
-    setClues(data.clues);
-    setCaseInfo(data.case);
-  }
-
-  loadCase();
 }, []);
 
   return (
@@ -82,7 +82,7 @@ useEffect(() => {
           </p>
 
           <div className={styles.buttonPos}>
-            <button className={styles.button} onClick={() => navigate('/suspects')}>
+            <button className={styles.button} onClick={() => loadCase()}>
                🔍 Iniciar Investigação
              </button>
           </div>
