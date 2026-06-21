@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from '../App';
+import Login from '../pages/Login/Login';
 import Home from '../pages/Home/Home';
 import Suspect from '../pages/Suspect/Suspect';
 import SuspectDetails from '../pages/SuspectDetails/SuspectDetails';
@@ -9,6 +10,10 @@ import Accusation from '../pages/Accusation/Accusation';
 import Result from '../pages/Result/Result';
 
 const router = createBrowserRouter([
+  {
+    path: '/login',
+    element: <Login />,
+  },
   {
     path: '/',
     element: <App />,
