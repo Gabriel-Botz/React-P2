@@ -7,30 +7,15 @@ import { useInvestigation } from '../../context/InvestigationContext.jsx'
 
 
 function Witness() {
-    const [witnesses, setWitnesses] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const { progressBar,
+            setProgressBar,
+            revealedWitnesses,
+            revealWitness,
+            witnesses,
+            setWitnesses
+        } = useInvestigation();
     const [readWitnesses, setReadWitnesses] = useState([]);
     const [error, setError] = useState(null);
-    const { progressBar, setProgressBar, revealedWitnesses, revealWitness } = useInvestigation();
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            const fetchWitnesses = async () => {
-                try {
-                    setLoading(true);
-                    setError(null);
-                    const response = await axios.get('http://localhost:5000/cases/generate');
-                    setWitnesses(response.data.witnesses || []);
-                } catch (e) {
-                    setError('Falha na comunicação com a central de depoimentos. Verifique se o servidor está ativo.')
-                } finally {
-                    setLoading(false)
-                }
-            };
-            fetchWitnesses();
-        }, 1000);
-        return () => clearTimeout(timer);
-    }, [])
 
      const witnessesWithProgress = witnesses.map((witness, index) => ({
         ...witness,
@@ -49,10 +34,6 @@ function Witness() {
         revealWitness(id);
         setProgressBar(progressBar + 6);
     };
-
-    if (loading) {
-        return <Loading/>;
-    }
 
     if (error) {
         return (
