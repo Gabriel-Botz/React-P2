@@ -1,6 +1,7 @@
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
 import ClueCard from "../../components/ClueCard/ClueCard";
 import styles from "./Clues.module.css";
+import { Loading } from "../../components/Loading/Loading.jsx";
 import { useInvestigation } from "../../context/InvestigationContext";
 
 function Clues() {
@@ -10,9 +11,6 @@ function Clues() {
     clues,
     unlockClue,
   } = useInvestigation();
-
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   // Atribui percentuais de desbloqueio a cada pista
   const cluesList = useMemo(() => {
@@ -32,12 +30,8 @@ function Clues() {
       setProgressBar(progressBar + 4.4);
   }
 
-  if (loading) {
-    return <h2>Carregando pistas...</h2>;
-  }
-
-  if (error) {
-    return <h2>Erro ao carregar pistas.</h2>;
+  if (!clues || clues.length === 0) {
+    return <Loading />;
   }
 
   return (
