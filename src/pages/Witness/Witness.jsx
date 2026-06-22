@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 import styles  from './Witness.module.css'
-import WitnessCard  from '../../components/WitnessCard/WhitnessCard.jsx';
+import WitnessCard  from '../../components/WitnessCard/WhitnessCard.jsx'
 import { useInvestigation } from '../../context/InvestigationContext.jsx'
-
+import { Loading } from "../../components/Loading/Loading.jsx"
 
 function Witness() {
     const { progressBar,
@@ -46,6 +46,10 @@ function Witness() {
             </div>
             </div>
         );
+    }
+
+    if (!witnesses || witnesses.length === 0) {
+        return <Loading />;
     }
 
     return (
