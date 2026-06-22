@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import Header from "../../components/Header/Header";
 import styles from "./Home.module.css";
 import { generateCase } from "../../services/api";
 import { useInvestigation } from "../../context/InvestigationContext";
@@ -31,7 +30,9 @@ async function loadCase() {
 }
 
 useEffect(() => {
-
+  if (!caseInfo) {
+    loadCase();
+  }
 }, []);
 
   return (
@@ -82,7 +83,7 @@ useEffect(() => {
           </p>
 
           <div className={styles.buttonPos}>
-            <button className={styles.button} onClick={() => loadCase()}>
+            <button className={styles.button} onClick={() => navigate('/suspects')}>
                🔍 Iniciar Investigação
              </button>
           </div>
