@@ -32,7 +32,7 @@ function Witness() {
 
     const handleReveal = (id) => {
         revealWitness(id);
-        setProgressBar(progressBar + 10);
+        setProgressBar(progressBar + 6);
     };
 
     if (error) {
