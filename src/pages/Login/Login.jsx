@@ -17,6 +17,7 @@ function Login() {
     }
 
     setError("");
+    localStorage.setItem("user", JSON.stringify({ email, password }));
     navigate("/");
   }
 
@@ -61,6 +62,10 @@ function Login() {
             Entrar
           </button>
         </form>
+
+        <button className={styles.backButton} onClick={() => navigate("/")}>
+          Voltar ao início
+        </button>
 
         <p className={styles.footer}>
           Credenciais de teste: qualquer email e senha
