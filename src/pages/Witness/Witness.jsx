@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import styles  from './Witness.module.css'
 import WitnessCard  from '../../components/WitnessCard/WhitnessCard.jsx';
-import { Loading } from '../../components/Loading/Loading.jsx';
 import { useInvestigation } from '../../context/InvestigationContext.jsx'
 
 
