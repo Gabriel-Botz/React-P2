@@ -1,7 +1,7 @@
 # 🕵️ The Last Clue
 
 > Plataforma interativa de investigação criminal desenvolvida em React.  
-> Trabalho em grupo — SerratTec | Residência em Tecnologia
+> Trabalho em grupo — SerraTec | Residência em Tecnologia
 
 ---
 
@@ -9,7 +9,7 @@
 
 **The Last Clue** é um jogo de detetive onde o usuário assume o papel de investigador responsável por solucionar um caso de assassinato. O jogador analisa suspeitos, coleta pistas, consulta depoimentos e realiza a acusação final com base nas evidências reunidas.
 
-O projeto demonstra na prática os principais conceitos de React estudados durante a disciplina: componentização, gerenciamento de estado, Context API, React Router, consumo de APIs e renderização condicional.
+O sistema utiliza geração dinâmica de casos via **Groq API** e demonstra na prática os principais conceitos de React estudados durante a disciplina: componentização, gerenciamento de estado, Context API, React Router, consumo de APIs e renderização condicional.
 
 ---
 
@@ -23,49 +23,150 @@ O projeto demonstra na prática os principais conceitos de React estudados duran
 | React Icons | Ícones da interface |
 | React Toastify | Feedback visual (notificações) |
 | Context API | Estado global da investigação |
+| Node.js + Express | Backend e geração de casos |
+| Groq API | Geração dinâmica de casos com IA |
 
 ---
 
 ## 🗂️ Estrutura de Pastas
 
 ```
-src/
-├── components/
-│   ├── Header/
-│   ├── Footer/
-│   ├── SuspectCard/
-│   ├── ClueCard/
-│   ├── WitnessCard/
-│   ├── ProgressBar/
-│   ├── Loading/
-│   └── Modal/
-├── pages/
-│   ├── Home/
-│   ├── Suspects/
-│   ├── SuspectDetails/
-│   ├── Clues/
-│   ├── Witnesses/
-│   ├── Accusation/
-│   └── Result/
-├── context/
-│   └── InvestigationContext.jsx
-├── services/
-│   └── api.js
-├── routes/
-│   └── AppRoutes.jsx
-├── assets/
-│   ├── images/
-│   └── icons/
-└── styles/
+the-last-clue/
+├── frontend/
+│   └── src/
+│       ├── components/
+│       │   ├── Header/
+│       │   ├── Footer/
+│       │   ├── SuspectCard/
+│       │   ├── ClueCard/
+│       │   ├── WitnessCard/
+│       │   ├── ProgressBar/
+│       │   ├── Loading/
+│       │   └── Modal/
+│       ├── pages/
+│       │   ├── Home/
+│       │   ├── Suspects/
+│       │   ├── SuspectDetails/
+│       │   ├── Clues/
+│       │   ├── Witnesses/
+│       │   ├── Accusation/
+│       │   └── Result/
+│       ├── context/
+│       │   └── InvestigationContext.jsx
+│       ├── services/
+│       │   └── api.js
+│       ├── routes/
+│       │   └── AppRoutes.jsx
+│       ├── assets/
+│       │   ├── images/
+│       │   └── icons/
+│       └── styles/
+└── backend/
+    ├── .env         ← criar manualmente (não commitar)
+    └── ...
 ```
 
 ---
 
-## 🔀 Fluxo da Aplicação
+## ⚙️ Pré-requisitos
+
+Antes de começar, certifique-se de ter instalado na sua máquina:
+
+- [Node.js](https://nodejs.org/) v18 ou superior
+- [npm](https://www.npmjs.com/)
+- Uma chave de API válida da [Groq](https://console.groq.com/) (gratuita)
+
+---
+
+## 🚀 Como Rodar o Projeto
+
+### 1. Clone o repositório
+
+```bash
+git clone <url-do-repositorio>
+cd the-last-clue
+```
+
+---
+
+### 2. Configure e inicie o Backend
+
+#### 2.1. Acesse a pasta do backend
+
+```bash
+cd backend
+```
+
+#### 2.2. Instale as dependências
+
+```bash
+npm install
+```
+
+#### 2.3. Configure as variáveis de ambiente
+
+Crie um arquivo `.env` dentro da pasta `backend/` com o seguinte conteúdo:
+
+```env
+GROQ_API_KEY=sua_chave_aqui
+```
+
+> 💡 Obtenha sua chave gratuita em [console.groq.com](https://console.groq.com/)  
+> ⚠️ Nunca commite o arquivo `.env` no GitHub. Ele já deve estar no `.gitignore`.
+
+#### 2.4. Inicie o servidor
+
+```bash
+npm start
+```
+
+✅ Backend rodando em: **http://localhost:5000**
+
+---
+
+### 3. Configure e inicie o Frontend
+
+Abra um **novo terminal** e, a partir da raiz do projeto:
+
+#### 3.1. Acesse a pasta do frontend
+
+```bash
+cd frontend
+```
+
+#### 3.2. Instale as dependências
+
+```bash
+npm install
+```
+
+#### 3.3. Inicie a aplicação
+
+```bash
+npm run dev
+```
+
+✅ Frontend disponível em: **http://localhost:5173**
+
+---
+
+> ⚠️ **Importante:** o backend precisa estar rodando antes de iniciar o frontend, caso contrário as requisições vão falhar.
+
+---
+
+## 🎮 Como Jogar
 
 ```
 Home → Suspects → SuspectDetails → Clues → Witnesses → Accusation → Result
 ```
+
+1. **Tela Inicial** — Leia o resumo do caso e clique em "Iniciar Investigação"
+2. **Suspeitos** — Explore a lista de suspeitos e clique em "Investigar" em cada um
+3. **Perfil do Suspeito** — Analise motivo, álibi e evidências; marque como *Investigado*, *Inocente* ou *Principal Suspeito*
+4. **Pistas** — Descubra evidências físicas, objetos e relatórios desbloqueados progressivamente
+5. **Depoimentos** — Consulte testemunhas e cruze as informações com os suspeitos
+6. **Acusação Final** — Selecione o culpado quando tiver certeza (botão liberado após progresso mínimo)
+7. **Resultado** — Descubra se você solucionou o caso!
 
 ---
 
@@ -109,27 +210,27 @@ Estado global centralizado da investigação:
 ### 👤 Membro 1 — Setup & Infraestrutura
 **Responsabilidade:** Base do projeto. Tudo começa aqui.
 
-- [x] Criar o projeto com `create-react-app` ou `vite`
-- [x] Instalar dependências (`axios`, `react-router-dom`, `react-icons`, `react-toastify`)
-- [x] Criar estrutura de pastas (`components/`, `pages/`, `context/`, `services/`, `routes/`)
+- [ ] Criar o projeto com `create-react-app` ou `vite`
+- [ ] Instalar dependências (`axios`, `react-router-dom`, `react-icons`, `react-toastify`)
+- [ ] Criar estrutura de pastas (`components/`, `pages/`, `context/`, `services/`, `routes/`)
 - [ ] Configurar `api.js` com `axios.create` e `baseURL`
-- [x] Criar `AppRoutes.jsx` com todas as rotas definidas
-- [x] Criar o `InvestigationContext.jsx` com estado inicial e Provider
+- [ ] Criar `AppRoutes.jsx` com todas as rotas definidas
+- [ ] Criar o `InvestigationContext.jsx` com estado inicial e Provider
 - [ ] Configurar o `App.jsx` com Provider + Router + Toastify
-- [x] Criar o `README.md` no repositório
-- [x] Subir estrutura base no GitHub e criar branches para cada membro
+- [ ] Criar o `README.md` no repositório
+- [ ] Subir estrutura base no GitHub e criar branches para cada membro
 
 ---
 
 ### 👤 Membro 2 — Layout Global (Header, Footer, ProgressBar, Loading)
 **Responsabilidade:** Componentes compartilhados que aparecem em todas as telas.
 
-- [x] Componente `Header` com navegação principal entre as páginas
-- [x] Componente `Footer` com informações do projeto/grupo
+- [ ] Componente `Header` com navegação principal entre as páginas
+- [ ] Componente `Footer` com informações do projeto/grupo
 - [ ] Componente `Loading` para exibir durante requisições (`useState` + renderização condicional)
-- [x] Componente `ProgressBar` consumindo o `progress` do Context e exibindo porcentagem visual
-- [x] Estilização geral: dark mode, paleta de cores (preto, cinza escuro, branco, vermelho escuro)
-- [x] Importar e configurar fontes e estilos globais
+- [ ] Componente `ProgressBar` consumindo o `progress` do Context e exibindo porcentagem visual
+- [ ] Estilização geral: dark mode, paleta de cores (preto, cinza escuro, branco, vermelho escuro)
+- [ ] Importar e configurar fontes e estilos globais
 
 ---
 
@@ -195,10 +296,10 @@ Estado global centralizado da investigação:
 **Responsabilidade:** Depoimentos de testemunhas e envio da acusação final.
 
 **Witnesses:**
-- [x] Requisição `GET /witnesses` com Axios usando `useEffect`
-- [x] Componente `WitnessCard`: nome da testemunha e depoimento
-- [x] Destacar visualmente depoimentos que contradizem suspeitos
-- [x] Estado de loading e erro com renderização condicional
+- [ ] Requisição `GET /witnesses` com Axios usando `useEffect`
+- [ ] Componente `WitnessCard`: nome da testemunha e depoimento
+- [ ] Destacar visualmente depoimentos que contradizem suspeitos
+- [ ] Estado de loading e erro com renderização condicional
 
 **Accusation:**
 - [ ] Listar suspeitos para seleção final
@@ -304,4 +405,4 @@ Semana 4
 
 ---
 
-*Projeto desenvolvido durante a Residência em Tecnologia — SerratTec*
+*Projeto desenvolvido durante a Residência em Tecnologia — SerraTec | Universidade Veiga de Almeida*

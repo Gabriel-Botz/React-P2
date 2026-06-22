@@ -19,7 +19,7 @@ function Header () {
                 <li><NavLink className={getLinkClass} to="/suspects">Suspeitos</NavLink></li>
                 <li><NavLink className={getLinkClass} to="/clues">Pistas</NavLink></li>
                 <li><NavLink className={getLinkClass} to="/witnesses">Testemunhas</NavLink></li>
-                <li><NavLink className={getLinkClass} to="/accusation">Acusar</NavLink></li>
+                <li> <Link className={style}> <NavLink className={getLinkClass} to="/accusation">Acusar</NavLink></Link> </li>
             </ul>
         </div>
         </div>
