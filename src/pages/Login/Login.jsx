@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import styles from "./Login.module.css";
 
 function Login() {
@@ -7,6 +7,11 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  const isAuth = localStorage.getItem("isInvestigatorLogged") === "true";
+  if (isAuth) {
+    return <Navigate to="/" replace />;
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -16,18 +21,26 @@ function Login() {
       return;
     }
 
-    setError("");
-    navigate("/");
+    if (email === "investigadorfred@gmail.com" && password === "senhaforte") {
+      setError("");
+      localStorage.setItem("isInvestigatorLogged", "true");
+      localStorage.setItem("investigatorEmail", email);
+      localStorage.setItem("investigatorSenha", password);
+      
+      navigate("/", { replace: true });
+    } else {
+      setError("Usuário inválido para acessar os arquivos");
+    }
   }
 
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <div className={styles.badge}>AREA RESTRITA</div>
+        <div className={styles.badge}>ÁREA RESTRITA</div>
 
         <h1 className={styles.title}>Acesso ao Sistema</h1>
         <p className={styles.subtitle}>
-          Enter para acessar os arquivos do caso
+          Insira suas credenciais para acessar os arquivos do caso
         </p>
 
         <div className={styles.divider} />
@@ -63,7 +76,7 @@ function Login() {
         </form>
 
         <p className={styles.footer}>
-          Credenciais de teste: qualquer email e senha
+          Credenciais criptografadas e monitoradas.
         </p>
       </div>
     </div>

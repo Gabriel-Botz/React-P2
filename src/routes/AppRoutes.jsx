@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import App from '../App';
 import Login from '../pages/Login/Login';
 import Home from '../pages/Home/Home';
@@ -18,18 +18,20 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />,
     children: [
-
-      { path: '/', element: <Home />, },
+      { index: true, element: <Home /> },
       { path: '/accusation', element: <Accusation />, },
       { path: '/suspects', element: <Suspect />, },
       { path: '/suspect-details', element: <SuspectDetails />, },
       { path: '/witnesses', element: <Witness />, },
       { path: '/clues', element: <Clues />, },
       { path: '/result', element: <Result />, },
-      
       { path: '/suspect-details/:id', element: <SuspectDetails />, },
     ],
   },
+  {
+    path: '*',
+    element: <Navigate to="/login" replace />,
+  }
 ]);
 
 export default function AppRoutes() {
