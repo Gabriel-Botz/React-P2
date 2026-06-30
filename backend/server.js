@@ -2,9 +2,9 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import caseRoutes from "./routes/caseRoutes.js";
+import chatRoutes from "./routes/chatRoutes.js";
 
 dotenv.config();
-console.log("Chave:", process.env.GROQ_API_KEY);
 const app = express();
 
 app.use(cors());
@@ -19,6 +19,7 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 app.use("/cases", caseRoutes);
+app.use("/chat", chatRoutes);
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
