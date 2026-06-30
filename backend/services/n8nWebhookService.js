@@ -7,7 +7,7 @@ const N8N_WEBHOOK_URL = process.env.N8N_HELP_WEBHOOK_URL;
  */
 export async function forwardToN8n(message) {
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+  const timeoutId = setTimeout(() => controller.abort(), 20000); // 20 second timeout
 
   try {
     const response = await fetch(N8N_WEBHOOK_URL, {
