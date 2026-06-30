@@ -5,6 +5,88 @@
 
 ---
 
+## 🚀 Como Rodar o Projeto
+
+### 1. Clone o repositório
+
+```bash
+git clone <url-do-repositorio>
+cd the-last-clue
+```
+
+---
+
+### 2. Configure e inicie o Backend
+
+#### 2.1. Acesse a pasta do backend
+
+```bash
+cd backend
+```
+
+#### 2.2. Instale as dependências
+
+```bash
+npm install
+```
+
+#### 2.3. Configure as variáveis de ambiente
+
+Crie um arquivo `.env` dentro da pasta `backend/` com o seguinte conteúdo:
+
+```env
+# API Keys
+GROQ_API_KEY=sua_chave_api
+
+# Server Configuration
+PORT=5000
+
+# Endpoint do n8n
+N8N_HELP_WEBHOOK_URL = http://localhost:5678/webhook-test/help
+```
+
+> 💡 Obtenha sua chave gratuita em [console.groq.com](https://console.groq.com/)
+
+#### 2.4. Inicie o servidor
+
+```bash
+npm start
+```
+
+✅ Backend rodando em: **http://localhost:5000**
+
+---
+
+### 3. Configure e inicie o Frontend
+
+Abra um **novo terminal** e, a partir da raiz do projeto:
+
+#### 3.1. Acesse a pasta do frontend
+
+```bash
+cd frontend
+```
+
+#### 3.2. Instale as dependências
+
+```bash
+npm install
+```
+
+#### 3.3. Inicie a aplicação
+
+```bash
+npm run dev
+```
+
+✅ Frontend disponível em: **http://localhost:5173**
+
+---
+
+> ⚠️ **Importante:** o backend precisa estar rodando antes de iniciar o frontend, caso contrário as requisições vão falhar.
+
+---
+
 ## 📖 Sobre o Projeto
 
 **The Last Clue** é um jogo de detetive onde o usuário assume o papel de investigador responsável por solucionar um caso de assassinato. O jogador analisa suspeitos, coleta pistas, consulta depoimentos e realiza a acusação final com base nas evidências reunidas.
@@ -75,82 +157,6 @@ Antes de começar, certifique-se de ter instalado na sua máquina:
 - [Node.js](https://nodejs.org/) v18 ou superior
 - [npm](https://www.npmjs.com/)
 - Uma chave de API válida da [Groq](https://console.groq.com/) (gratuita)
-
----
-
-## 🚀 Como Rodar o Projeto
-
-### 1. Clone o repositório
-
-```bash
-git clone <url-do-repositorio>
-cd the-last-clue
-```
-
----
-
-### 2. Configure e inicie o Backend
-
-#### 2.1. Acesse a pasta do backend
-
-```bash
-cd backend
-```
-
-#### 2.2. Instale as dependências
-
-```bash
-npm install
-```
-
-#### 2.3. Configure as variáveis de ambiente
-
-Crie um arquivo `.env` dentro da pasta `backend/` com o seguinte conteúdo:
-
-```env
-GROQ_API_KEY=sua_chave_aqui
-```
-
-> 💡 Obtenha sua chave gratuita em [console.groq.com](https://console.groq.com/)  
-> ⚠️ Nunca commite o arquivo `.env` no GitHub. Ele já deve estar no `.gitignore`.
-
-#### 2.4. Inicie o servidor
-
-```bash
-npm start
-```
-
-✅ Backend rodando em: **http://localhost:5000**
-
----
-
-### 3. Configure e inicie o Frontend
-
-Abra um **novo terminal** e, a partir da raiz do projeto:
-
-#### 3.1. Acesse a pasta do frontend
-
-```bash
-cd frontend
-```
-
-#### 3.2. Instale as dependências
-
-```bash
-npm install
-```
-
-#### 3.3. Inicie a aplicação
-
-```bash
-npm run dev
-```
-
-✅ Frontend disponível em: **http://localhost:5173**
-
----
-
-> ⚠️ **Importante:** o backend precisa estar rodando antes de iniciar o frontend, caso contrário as requisições vão falhar.
 
 ---
 

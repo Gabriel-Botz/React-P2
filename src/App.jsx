@@ -3,6 +3,7 @@ import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import ProgressBar from './components/ProgressBar/ProgressBar'
 import { InvestigationProvider } from './context/InvestigationContext'
+import ChatWidget from './components/ChatWidget/ChatWidget'
 import './App.css'
 import { ToastContainer } from "react-toastify";
 
@@ -27,6 +28,7 @@ function App() {
           />
         </main>
         <Footer />
+        <ChatWidget />
       </InvestigationProvider>
     </>
   )
